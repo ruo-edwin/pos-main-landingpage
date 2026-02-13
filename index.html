@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SmartPOS | Complete Business Setup</title>
-
-<!-- META PIXEL -->
+ <!-- META PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -24,9 +23,7 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1562977138152805&ev=PageView&noscript=1"/>
 </noscript>
 <!-- END META PIXEL -->
-
 <style>
-/* ===== YOUR ORIGINAL CSS (UNCHANGED) ===== */
 :root{
   --primary:#635BFF;
   --accent:#0A2540;
@@ -41,14 +38,22 @@ src="https://www.facebook.com/tr?id=1562977138152805&ev=PageView&noscript=1"/>
 
 html{scroll-behavior:smooth;}
 *{margin:0;padding:0;box-sizing:border-box;}
+
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   background:linear-gradient(180deg,#ffffff 0%,#f6f9fc 100%);
   color:var(--accent);
   line-height:1.6;
 }
-.container{max-width:1150px;margin:auto;padding:90px 20px;}
+
+.container{
+  max-width:1150px;
+  margin:auto;
+  padding:90px 20px;
+}
+
 .hero{text-align:center;max-width:900px;margin:auto;}
+
 .offer-banner{
   background:var(--offerBg);
   color:var(--offerText);
@@ -59,8 +64,20 @@ body{
   margin-bottom:25px;
   font-size:14px;
 }
-h1{font-size:52px;line-height:1.1;font-weight:600;margin-bottom:25px;}
-.subtitle{font-size:20px;color:var(--muted);margin-bottom:40px;}
+
+h1{
+  font-size:52px;
+  line-height:1.1;
+  font-weight:600;
+  margin-bottom:25px;
+}
+
+.subtitle{
+  font-size:20px;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+
 .primary{
   background:var(--primary);
   color:white;
@@ -74,88 +91,392 @@ h1{font-size:52px;line-height:1.1;font-weight:600;margin-bottom:25px;}
   text-decoration:none;
   display:inline-block;
 }
+
 .primary:hover{
   transform:translateY(-3px);
   box-shadow:0 15px 35px rgba(99,91,255,.3);
 }
+
 .video-wrapper{margin-top:60px;text-align:center;}
+
 .video-wrapper video{
   width:100%;
   max-width:900px;
   border-radius:24px;
   box-shadow:0 40px 80px rgba(0,0,0,.08);
 }
+
 .section{margin-top:140px;text-align:center;}
+
 .section h2{font-size:40px;margin-bottom:20px;}
-.section p{font-size:19px;color:var(--muted);max-width:700px;margin:auto;}
-.pain{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;text-align:left;}
-@media(max-width:900px){.pain{grid-template-columns:1fr;text-align:center;}}
-.pain div{font-size:17px;color:var(--muted);line-height:1.9;}
-.social-proof{
-  margin-top:100px;background:white;padding:60px;border-radius:30px;
-  box-shadow:0 40px 80px rgba(0,0,0,.06);max-width:900px;
-  margin-left:auto;margin-right:auto;
+
+.section p{
+  font-size:19px;
+  color:var(--muted);
+  max-width:700px;
+  margin:auto;
 }
-.social-proof p{font-size:20px;font-style:italic;color:var(--accent);}
-.social-proof small{display:block;margin-top:20px;color:var(--muted);}
+
+.pain{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  text-align:left;
+}
+
+@media(max-width:900px){
+  .pain{grid-template-columns:1fr;text-align:center;}
+}
+
+.pain div{
+  font-size:17px;
+  color:var(--muted);
+  line-height:1.9;
+}
+
+.social-proof{
+  margin-top:100px;
+  background:white;
+  padding:60px;
+  border-radius:30px;
+  box-shadow:0 40px 80px rgba(0,0,0,.06);
+  max-width:900px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.social-proof p{
+  font-size:20px;
+  font-style:italic;
+  color:var(--accent);
+}
+
+.social-proof small{
+  display:block;
+  margin-top:20px;
+  color:var(--muted);
+}
+
 .authority{margin-top:120px;text-align:center;}
+
 .authority h2{font-size:36px;margin-bottom:20px;}
-.authority p{font-size:18px;color:var(--muted);max-width:750px;margin:auto;}
+
+.authority p{
+  font-size:18px;
+  color:var(--muted);
+  max-width:750px;
+  margin:auto;
+}
+
 .pricing{margin-top:120px;text-align:center;}
 .pricing h2{font-size:40px;}
-.scarcity{margin-top:20px;font-size:16px;color:var(--offerText);font-weight:600;}
-.price-grid{margin-top:70px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
-@media(max-width:900px){.price-grid{grid-template-columns:1fr;}}
+
+.scarcity{
+  margin-top:20px;
+  font-size:16px;
+  color:var(--offerText);
+  font-weight:600;
+}
+
+.price-grid{
+  margin-top:70px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+
+@media(max-width:900px){
+  .price-grid{grid-template-columns:1fr;}
+}
+
 .price-card{
-  background:white;border:1px solid var(--border);border-radius:30px;
-  padding:60px 40px;text-align:left;transition:.3s ease;position:relative;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:30px;
+  padding:60px 40px;
+  text-align:left;
+  transition:.3s ease;
+  position:relative;
 }
-.price-card:hover{transform:translateY(-6px);box-shadow:0 40px 80px rgba(0,0,0,.08);}
-.highlight{border:2px solid var(--primary);background:linear-gradient(180deg,#ffffff 0%,#eef2ff 100%);transform:scale(1.06);}
+
+.price-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 40px 80px rgba(0,0,0,.08);
+}
+
+.highlight{
+  border:2px solid var(--primary);
+  background:linear-gradient(180deg,#ffffff 0%,#eef2ff 100%);
+  transform:scale(1.06);
+}
+
 .badge{
-  background:var(--primary);color:white;padding:6px 16px;border-radius:40px;
-  font-size:13px;display:inline-block;margin-bottom:15px;
+  background:var(--primary);
+  color:white;
+  padding:6px 16px;
+  border-radius:40px;
+  font-size:13px;
+  display:inline-block;
+  margin-bottom:15px;
 }
-.original{text-decoration:line-through;color:var(--muted);font-size:18px;}
-.discount{font-size:38px;font-weight:700;color:var(--priceAccent);margin:10px 0 25px 0;}
+
+.original{
+  text-decoration:line-through;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.discount{
+  font-size:38px;
+  font-weight:700;
+  color:var(--priceAccent);
+  margin:10px 0 25px 0;
+}
+
 ul{list-style:none;margin-bottom:35px;}
 ul li{margin-bottom:12px;font-size:16px;color:var(--muted);}
+
 .cta{text-align:center;margin-top:120px;}
+
 .whatsapp{
-  background:#25D366;color:white;padding:16px 36px;border:none;
-  border-radius:10px;font-weight:600;font-size:16px;cursor:pointer;
+  background:#25D366;
+  color:white;
+  padding:16px 36px;
+  border:none;
+  border-radius:10px;
+  font-weight:600;
+  font-size:16px;
+  cursor:pointer;
 }
-footer{margin-top:80px;text-align:center;font-size:14px;color:var(--muted);}
+
+footer{
+  margin-top:80px;
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+}
+
+/* MODAL */
 #qualificationModal{
-  display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:9999;
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
 }
+
 .modal-content{
-  background:white;padding:30px;border-radius:20px;width:90%;max-width:500px;
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  width:90%;
+  max-width:500px;
 }
-.modal-content input,.modal-content select{
-  width:100%;padding:12px;margin-bottom:12px;border:1px solid #ddd;border-radius:8px;
+
+.modal-content input,
+.modal-content select{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border:1px solid #ddd;
+  border-radius:8px;
 }
 </style>
 </head>
 
 <body>
-<!-- ===== YOUR ORIGINAL HTML CONTENT REMAINS EXACTLY SAME ===== -->
-<!-- (I am not reprinting entire content here for brevity — everything stays identical) -->
+
+<div class="container">
+
+<div class="hero">
+<div class="offer-banner">
+🔥 15% OFF All Packages — Valid Until End of February
+</div>
+
+<h1>
+If You Don’t Know Your Exact Profit Every Day,
+You Are Losing Money.
+</h1>
+
+<p class="subtitle">
+SmartPOS + Hardware installed for serious retail shop owners in Kenya.
+No guessing. No confusion. Full control.
+</p>
+
+<a class="primary" href="#pricing">
+View Packages & Pricing
+</a>
+</div>
+
+<div class="video-wrapper">
+<video controls playsinline preload="metadata" width="100%">
+<source src="SMARTPOS-FINALDEMO.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="section">
+<h2>Most Shops Don’t Fail From Lack of Sales</h2>
+<p>They fail because they don’t track properly.</p>
+
+<div class="pain">
+<div>
+✔ Staff stealing without knowing<br>
+✔ Stock disappearing silently<br>
+✔ Cash not matching inventory<br>
+✔ Guessing daily profit
+</div>
+<div>
+✔ No real reports<br>
+✔ No performance tracking<br>
+✔ No control over the business
+</div>
+</div>
+</div>
+
+<div class="social-proof">
+<p>
+“After installing SmartPOS, I finally understood where my money was going.
+My daily tracking changed everything.”
+</p>
+<small>– Retail Shop Owner, Nairobi</small>
+</div>
+
+<div class="authority">
+<h2>Built for Retail Businesses Across Kenya</h2>
+<p>
+SmartPOS is designed specifically for Kenyan retail shops that want structure,
+accountability, and real financial visibility.
+it’s a complete business control system.
+</p>
+</div>
+
+<div class="pricing" id="pricing">
+<h2>Choose Your Setup</h2>
+
+<div class="scarcity">
+⚠ Only 11 Installation Slots Available Before February Ends
+</div>
+
+<div class="price-grid">
+
+<div class="price-card">
+<h3>Software Only</h3>
+<div class="original">Ksh 18,000</div>
+<div class="discount">Ksh 15,300</div>
+<ul>
+<li>SmartPOS (1 year)</li>
+<li>Sales tracking</li>
+<li>Profit reports</li>
+</ul>
+<button class="primary" onclick="openForm('Software Only - 15,300 Offer')">
+Get Offer
+</button>
+</div>
+
+<div class="price-card">
+<h3>Android POS Package</h3>
+<div class="original">Ksh 28,000</div>
+<div class="discount">Ksh 23,800</div>
+<ul>
+<li>POS Device</li>
+<li>SmartPOS (1 year)</li>
+<li>Installation included</li>
+</ul>
+<button class="primary" onclick="openForm('Android POS - 23,800 Offer')">
+Get Offer
+</button>
+</div>
+
+<div class="price-card highlight">
+<div class="badge">Most Popular</div>
+<h3>Desktop Complete Setup</h3>
+<div class="original">Ksh 38,000</div>
+<div class="discount">Ksh 32,300</div>
+<ul>
+<li>Desktop computer</li>
+<li>Receipt printer</li>
+<li>SmartPOS (1 year)</li>
+<li>Full installation</li>
+<li>Priority support</li>
+</ul>
+<button class="primary" onclick="openForm('Desktop Setup - 32,300 Offer')">
+Get Offer
+</button>
+</div>
+
+</div>
+</div>
+
+<div class="cta">
+<button class="whatsapp" onclick="openForm('General SmartPOS Inquiry')">
+Chat on WhatsApp
+</button>
+</div>
+
+<footer>
+© <span id="year"></span> SmartPOS
+</footer>
+
+</div>
+
+<!-- MODAL -->
+<div id="qualificationModal">
+<div class="modal-content">
+<h3 style="margin-bottom:20px;">Quick Qualification</h3>
+
+<input id="shopType" placeholder="Type of shop (Mini-mart, Electronics, etc)">
+
+<select id="shopStatus">
+<option value="">Is this a new or existing shop?</option>
+<option value="New Shop">New Shop</option>
+<option value="Existing Shop">Existing Shop</option>
+</select>
+
+<input id="trackingMethod" placeholder="How are you tracking sales currently?">
+
+<select id="timeline">
+<option value="">Installation timeline</option>
+<option value="Immediately">Immediately</option>
+<option value="Within 30 days">Within 30 days</option>
+<option value="Just researching">Just researching</option>
+</select>
+
+<button class="primary" style="width:100%;" onclick="submitForm()">
+Continue to WhatsApp
+</button>
+
+<p onclick="closeForm()" style="text-align:center;margin-top:15px;cursor:pointer;color:#888;">
+Cancel
+</p>
+</div>
+</div>
 
 <script>
 let selectedPackage = "";
 
-// Track ViewContent when pricing section enters viewport
-const pricingSection = document.getElementById("pricing");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      fbq('track', 'ViewContent');
-    }
-  });
+document.addEventListener("DOMContentLoaded", function(){
+
+  const pricingSection = document.getElementById("pricing");
+  if (pricingSection) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          if (typeof fbq !== "undefined") {
+            fbq('track', 'ViewContent');
+          }
+        }
+      });
+    });
+    observer.observe(pricingSection);
+  }
+
 });
-observer.observe(pricingSection);
 
 function openForm(packageName){
 selectedPackage = packageName;
@@ -171,11 +492,22 @@ const shopType = document.getElementById("shopType").value;
 const shopStatus = document.getElementById("shopStatus").value;
 const trackingMethod = document.getElementById("trackingMethod").value;
 const timeline = document.getElementById("timeline").value;
+document.addEventListener("DOMContentLoaded", function(){
 
-// Track Lead event
-fbq('track', 'Lead', {
-  package: selectedPackage,
-  timeline: timeline
+  const pricingSection = document.getElementById("pricing");
+  if (pricingSection) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          if (typeof fbq !== "undefined") {
+            fbq('track', 'ViewContent');
+          }
+        }
+      });
+    });
+    observer.observe(pricingSection);
+  }
+
 });
 
 const message = `Hi SmartPOS 👋
