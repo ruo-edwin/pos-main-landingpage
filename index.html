@@ -462,6 +462,7 @@ let selectedPackage = "";
 
 document.addEventListener("DOMContentLoaded", function(){
 
+  // Track ViewContent when pricing section becomes visible
   const pricingSection = document.getElementById("pricing");
   if (pricingSection) {
     const observer = new IntersectionObserver(entries => {
@@ -469,6 +470,7 @@ document.addEventListener("DOMContentLoaded", function(){
         if(entry.isIntersecting){
           if (typeof fbq !== "undefined") {
             fbq('track', 'ViewContent');
+            console.log("ViewContent fired");
           }
         }
       });
@@ -479,38 +481,31 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 function openForm(packageName){
-selectedPackage = packageName;
-document.getElementById("qualificationModal").style.display = "flex";
+  selectedPackage = packageName;
+  document.getElementById("qualificationModal").style.display = "flex";
 }
 
 function closeForm(){
-document.getElementById("qualificationModal").style.display = "none";
+  document.getElementById("qualificationModal").style.display = "none";
 }
 
 function submitForm(){
-const shopType = document.getElementById("shopType").value;
-const shopStatus = document.getElementById("shopStatus").value;
-const trackingMethod = document.getElementById("trackingMethod").value;
-const timeline = document.getElementById("timeline").value;
-document.addEventListener("DOMContentLoaded", function(){
 
-  const pricingSection = document.getElementById("pricing");
-  if (pricingSection) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          if (typeof fbq !== "undefined") {
-            fbq('track', 'ViewContent');
-          }
-        }
-      });
+  const shopType = document.getElementById("shopType").value;
+  const shopStatus = document.getElementById("shopStatus").value;
+  const trackingMethod = document.getElementById("trackingMethod").value;
+  const timeline = document.getElementById("timeline").value;
+
+  // 🔥 FIRE LEAD EVENT HERE
+  if (typeof fbq !== "undefined") {
+    fbq('track', 'Lead', {
+      content_name: selectedPackage,
+      timeline: timeline
     });
-    observer.observe(pricingSection);
+    console.log("Lead fired");
   }
 
-});
-
-const message = `Hi SmartPOS 👋
+  const message = `Hi SmartPOS 👋
 
 Package: ${selectedPackage}
 
@@ -521,15 +516,16 @@ Installation Timeline: ${timeline}
 
 I would like to proceed with the February offer.`;
 
-const phoneNumber = "254714675719";
+  const phoneNumber = "254714675719";
 
-window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`);
+  window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`);
 
-closeForm();
+  closeForm();
 }
 
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
+
 
 </body>
 </html>
