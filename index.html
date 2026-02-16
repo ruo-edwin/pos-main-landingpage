@@ -287,6 +287,19 @@ footer{
   border:1px solid #ddd;
   border-radius:8px;
 }
+.error{
+  color:#DC2626;
+  font-size:13px;
+  display:block;
+  margin-bottom:8px;
+  text-align:left;
+}
+
+input.error-field,
+select.error-field{
+  border:2px solid #DC2626 !important;
+}
+
 </style>
 </head>
 
@@ -430,32 +443,41 @@ Chat on WhatsApp
 <div class="modal-content">
 <h3 style="margin-bottom:20px;">Quick Qualification</h3>
 
-<input id="shopType" placeholder="Type of shop (Mini-mart, Electronics, etc)">
+<form id="qualificationForm">
 
-<select id="shopStatus">
+<input id="shopType" placeholder="Type of shop (Mini-mart, Electronics, etc)" required>
+<small class="error" id="shopTypeError"></small>
+
+<select id="shopStatus" required>
 <option value="">Is this a new or existing shop?</option>
 <option value="New Shop">New Shop</option>
 <option value="Existing Shop">Existing Shop</option>
 </select>
+<small class="error" id="shopStatusError"></small>
 
-<input id="trackingMethod" placeholder="How are you tracking sales currently?">
+<input id="trackingMethod" placeholder="How are you tracking sales currently?" required>
+<small class="error" id="trackingMethodError"></small>
 
-<select id="timeline">
+<select id="timeline" required>
 <option value="">Installation timeline</option>
 <option value="Immediately">Immediately</option>
 <option value="Within 30 days">Within 30 days</option>
 <option value="Just researching">Just researching</option>
 </select>
+<small class="error" id="timelineError"></small>
 
-<button class="primary" style="width:100%;" onclick="submitForm()">
+<button type="submit" class="primary" style="width:100%;">
 Continue to WhatsApp
 </button>
+
+</form>
 
 <p onclick="closeForm()" style="text-align:center;margin-top:15px;cursor:pointer;color:#888;">
 Cancel
 </p>
 </div>
 </div>
+
 
 <script>
 let selectedPackage = "";
@@ -489,30 +511,55 @@ function closeForm(){
   document.getElementById("qualificationModal").style.display = "none";
 }
 
-function submitForm(){
+const form = document.getElementById("qualificationForm");
 
-  const shopType = document.getElementById("shopType").value;
-  const shopStatus = document.getElementById("shopStatus").value;
-  const trackingMethod = document.getElementById("trackingMethod").value;
-  const timeline = document.getElementById("timeline").value;
+form.addEventListener("submit", function(e){
+  e.preventDefault();
 
-  // 🔥 FIRE LEAD EVENT HERE
+  const shopType = document.getElementById("shopType");
+  const shopStatus = document.getElementById("shopStatus");
+  const trackingMethod = document.getElementById("trackingMethod");
+  const timeline = document.getElementById("timeline");
+
+  const fields = [
+    {input: shopType, error: "shopTypeError", message: "Please enter shop type"},
+    {input: shopStatus, error: "shopStatusError", message: "Please select shop status"},
+    {input: trackingMethod, error: "trackingMethodError", message: "Please enter tracking method"},
+    {input: timeline, error: "timelineError", message: "Please select installation timeline"}
+  ];
+
+  let isValid = true;
+
+  fields.forEach(field => {
+    const errorElement = document.getElementById(field.error);
+    errorElement.textContent = "";
+    field.input.classList.remove("error-field");
+
+    if (!field.input.value.trim()) {
+      errorElement.textContent = field.message;
+      field.input.classList.add("error-field");
+      isValid = false;
+    }
+  });
+
+  if (!isValid) return;
+
+  // 🔥 FIRE LEAD EVENT
   if (typeof fbq !== "undefined") {
     fbq('track', 'Lead', {
       content_name: selectedPackage,
-      timeline: timeline
+      timeline: timeline.value
     });
-    console.log("Lead fired");
   }
 
   const message = `Hi SmartPOS 👋
 
 Package: ${selectedPackage}
 
-Shop Type: ${shopType}
-Shop Status: ${shopStatus}
-Current Tracking: ${trackingMethod}
-Installation Timeline: ${timeline}
+Shop Type: ${shopType.value}
+Shop Status: ${shopStatus.value}
+Current Tracking: ${trackingMethod.value}
+Installation Timeline: ${timeline.value}
 
 I would like to proceed with the February offer.`;
 
@@ -521,7 +568,8 @@ I would like to proceed with the February offer.`;
   window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`);
 
   closeForm();
-}
+});
+
 
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
