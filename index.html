@@ -13,21 +13,23 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        color: white;
         min-height: 100vh;
+        color: #fff;
         overflow-x: hidden;
-        background: radial-gradient(circle at top, #1a0b2e 0%, #000 60%);
+
+        /* brighter premium background */
+        background: radial-gradient(circle at top, #2b1b4d 0%, #0b1020 55%, #070a12 100%);
     }
 
-    /* glowing background blobs */
+    /* soft glow */
     body::before {
         content: "";
         position: fixed;
-        top: -200px;
-        left: -200px;
-        width: 600px;
-        height: 600px;
-        background: rgba(128, 0, 255, 0.25);
+        top: -150px;
+        left: -150px;
+        width: 500px;
+        height: 500px;
+        background: rgba(168, 85, 247, 0.25);
         filter: blur(120px);
         z-index: -1;
     }
@@ -35,24 +37,23 @@
     body::after {
         content: "";
         position: fixed;
-        bottom: -200px;
-        right: -200px;
-        width: 600px;
-        height: 600px;
-        background: rgba(0, 150, 255, 0.15);
+        bottom: -150px;
+        right: -150px;
+        width: 500px;
+        height: 500px;
+        background: rgba(59, 130, 246, 0.18);
         filter: blur(120px);
         z-index: -1;
     }
 
     /* HEADER */
     .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 5%;
         position: fixed;
         top: 0;
         width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 5%;
         z-index: 10;
     }
 
@@ -69,7 +70,7 @@
         border-radius: 50%;
     }
 
-    /* HERO FULL SCREEN */
+    /* HERO */
     .hero {
         height: 100vh;
         display: flex;
@@ -78,66 +79,74 @@
         align-items: center;
         text-align: center;
         padding: 0 20px;
-        transition: all 0.3s ease;
     }
 
     .hero h1 {
-        font-size: clamp(26px, 4vw, 52px);
-        font-weight: bold;
+        font-size: clamp(28px, 4vw, 54px);
         max-width: 900px;
         line-height: 1.2;
     }
 
     .hero p {
-        color: #aaa;
+        color: #cfcfcf;
         margin-top: 15px;
-        font-size: clamp(14px, 1.5vw, 18px);
         max-width: 600px;
     }
 
     .btn {
         margin-top: 25px;
-        padding: 14px 25px;
+        padding: 14px 26px;
         background: white;
         color: black;
         border: none;
-        cursor: pointer;
-        font-weight: bold;
         border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
     }
 
-    /* WIZARD FULL SCREEN */
+    /* WIZARD PAGE */
     .container {
         display: none;
         height: 100vh;
         width: 100%;
-        padding: 120px 5% 40px;
-        display: none;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 80px 20px;
     }
 
-    .wizard-box {
+    /* CARD (IMPORTANT CHANGE) */
+    .card {
         width: 100%;
-        max-width: 700px;
+        max-width: 520px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 18px;
+        padding: 30px;
+        backdrop-filter: blur(16px);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.35);
     }
 
-    .progress {
+    /* STEP INDICATOR (1,2,3,Finish) */
+    .steps {
         display: flex;
         justify-content: space-between;
-        font-size: 11px;
-        color: #888;
-        margin-bottom: 10px;
+        font-size: 12px;
+        color: #aaa;
+        margin-bottom: 15px;
     }
 
+    .active-step {
+        color: white;
+        font-weight: bold;
+    }
+
+    /* PROGRESS BAR */
     .bar {
-        width: 100%;
         height: 6px;
         background: rgba(255,255,255,0.08);
-        border-radius: 5px;
+        border-radius: 10px;
         overflow: hidden;
-        margin-bottom: 30px;
+        margin-bottom: 25px;
     }
 
     .fill {
@@ -148,25 +157,24 @@
     }
 
     .question {
-        font-size: clamp(18px, 2vw, 24px);
+        font-size: 20px;
         margin-bottom: 15px;
-        text-align: left;
     }
 
     input, select, textarea {
         width: 100%;
         padding: 14px;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.1);
-        color: white;
         border-radius: 10px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(0,0,0,0.25);
+        color: white;
         outline: none;
-        font-size: 16px;
+        font-size: 15px;
     }
 
     input:focus, select:focus, textarea:focus {
-        border: 1px solid #a855f7;
-        box-shadow: 0 0 10px rgba(168,85,247,0.3);
+        border-color: #a855f7;
+        box-shadow: 0 0 10px rgba(168,85,247,0.25);
     }
 
     .nav {
@@ -175,37 +183,22 @@
         margin-top: 20px;
     }
 
-    .nav button {
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
+    .back {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.2);
+        color: #ccc;
+        padding: 10px 18px;
         border-radius: 8px;
+        cursor: pointer;
     }
 
     .next {
         background: linear-gradient(135deg, #a855f7, #6366f1);
         color: white;
-    }
-
-    .back {
-        background: transparent;
-        color: #aaa;
-        border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-        .header {
-            padding: 15px 20px;
-        }
-
-        .progress {
-            font-size: 10px;
-        }
-
-        .wizard-box {
-            padding: 0 10px;
-        }
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        cursor: pointer;
     }
 
 </style>
@@ -228,15 +221,13 @@
 
 <!-- WIZARD -->
 <div class="container" id="wizard">
-    <div class="wizard-box">
+    <div class="card">
 
-        <div class="progress">
-            <span>Business</span>
-            <span>Owner</span>
-            <span>Phone</span>
-            <span>Type</span>
-            <span>System</span>
-            <span>Pain</span>
+        <div class="steps">
+            <span id="s1">1</span>
+            <span id="s2">2</span>
+            <span id="s3">3</span>
+            <span id="s4">Finish</span>
         </div>
 
         <div class="bar"><div class="fill" id="fill"></div></div>
@@ -246,7 +237,7 @@
 
         <div class="nav">
             <button class="back" onclick="backStep()">Back</button>
-            <button class="next" id="nextBtn" onclick="nextStep()">Next</button>
+            <button class="next" onclick="nextStep()">Next</button>
         </div>
 
     </div>
@@ -283,7 +274,6 @@ function start() {
 
 function loadStep() {
     let q = questions[step];
-
     document.getElementById("question").innerText = q.q;
 
     let html = "";
@@ -304,16 +294,15 @@ function loadStep() {
 
     document.getElementById("inputArea").innerHTML = html;
     updateProgress();
+    updateSteps();
 
     setTimeout(() => {
-        const field = document.getElementById("field");
-        if(field) field.focus();
+        document.getElementById("field").focus();
     }, 100);
 }
 
 function save() {
-    let value = document.getElementById("field").value;
-    data[questions[step].key] = value;
+    data[questions[step].key] = document.getElementById("field").value;
 }
 
 function nextStep() {
@@ -334,12 +323,19 @@ function backStep() {
 }
 
 function updateProgress() {
-    let percent = (step / (questions.length - 1)) * 100;
-    document.getElementById("fill").style.width = percent + "%";
+    document.getElementById("fill").style.width =
+        (step / (questions.length - 1)) * 100 + "%";
+}
+
+function updateSteps() {
+    document.querySelectorAll(".steps span").forEach((el, i) => {
+        el.classList.remove("active-step");
+        if(i === step) el.classList.add("active-step");
+    });
 }
 
 function submit() {
-    console.log("FINAL LEAD:", data);
+    console.log(data);
     alert("Thanks! We will contact you shortly.");
 }
 </script>
