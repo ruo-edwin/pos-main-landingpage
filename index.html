@@ -408,22 +408,27 @@ function finish() {
 
     save();
 
-    fetch("https://script.google.com/macros/s/AKfycbyrZCxxhe6ZtIMz056rL5uhhu8FcQKXsLGgHM8i2OFtYNK1O7XSXiq2zq1vHVh2IQQKHg/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => res.text())
-    .then(response => {
-        console.log("Saved:", response);
-        alert("Thanks! We will contact you shortly.");
-    })
-    .catch(err => {
-        console.error("Error:", err);
-        alert("Something went wrong, but your data was captured.");
-    });
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "https://script.google.com/macros/s/AKfycbyrZCxxhe6ZtIMz056rL5uhhu8FcQKXsLGgHM8i2OFtYNK1O7XSXiq2zq1vHVh2IQQKHg/exec";
+    form.target = "hidden_iframe";
+
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "data";
+    input.value = JSON.stringify(data);
+
+    form.appendChild(input);
+    document.body.appendChild(form);
+
+    const iframe = document.createElement("iframe");
+    iframe.name = "hidden_iframe";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+
+    form.submit();
+
+    alert("Thanks! We will contact you shortly.");
 }
 </script>
 
