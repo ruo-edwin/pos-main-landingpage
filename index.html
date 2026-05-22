@@ -18,7 +18,6 @@ body {
     color: white;
     overflow-x: hidden;
 
-    /* ✅ YOUR ORIGINAL RUO DARK PURPLE SYSTEM BACKGROUND (refined) */
     background: radial-gradient(circle at top, #1a0b2e 0%, #070a12 60%, #05060a 100%);
 }
 
@@ -47,7 +46,7 @@ body::after {
     z-index: -1;
 }
 
-/* HEADER (BIGGER BRAND AREA) */
+/* HEADER */
 .header {
     position: fixed;
     top: 0;
@@ -56,7 +55,6 @@ body::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
 }
 
 .logo {
@@ -85,8 +83,8 @@ body::after {
 
 .hero h1 {
     font-size: clamp(30px, 4vw, 56px);
-    max-width: 900px;
     font-weight: 700;
+    max-width: 900px;
 }
 
 .hero p {
@@ -127,8 +125,9 @@ body::after {
 }
 
 /* =========================
-   BIGGER TIMELINE STEPS
+   FIXED TIMELINE (NO LINE THROUGH CIRCLES)
 ========================= */
+
 .steps {
     display: flex;
     justify-content: space-between;
@@ -137,30 +136,33 @@ body::after {
     position: relative;
 }
 
-/* connecting line */
+/* connecting line ONLY between circles */
 .steps::before {
     content: "";
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
+    left: 44px;
+    right: 44px;
     height: 3px;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-50%);
+    z-index: 0;
 }
 
+/* BIGGER CIRCLES (2x feel) */
 .step {
-    width: 44px;
-    height: 44px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: rgba(255,255,255,0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
+    font-size: 16px;
     color: #cbd5e1;
     z-index: 1;
     transition: 0.3s;
-    font-size: 14px;
 }
 
 /* active */
@@ -195,7 +197,7 @@ input, select, textarea {
     outline: none;
 }
 
-/* dropdown hint effect */
+/* dropdown arrow hint */
 select {
     cursor: pointer;
     appearance: none;
@@ -203,13 +205,8 @@ select {
                       linear-gradient(135deg, white 50%, transparent 50%);
     background-position: calc(100% - 20px) calc(1em + 2px),
                          calc(100% - 15px) calc(1em + 2px);
-    background-size: 5px 5px, 5px 5px;
+    background-size: 6px 6px, 6px 6px;
     background-repeat: no-repeat;
-}
-
-input:focus, select:focus, textarea:focus {
-    border-color: #a855f7;
-    box-shadow: 0 0 0 4px rgba(168,85,247,0.15);
 }
 
 /* NAV */
@@ -253,7 +250,7 @@ input:focus, select:focus, textarea:focus {
 <!-- HERO -->
 <div class="hero" id="hero">
     <h1>Control Your Business Sales, Stock & Staff in One System</h1>
-    <p>Modern POS system built for business clarity, control and growth.</p>
+    <p>Modern POS built for structure, clarity, and growth.</p>
     <button class="btn" onclick="start()">Check Eligibility</button>
 </div>
 
@@ -289,11 +286,7 @@ let data = {
 const questions = [
     { q: "Business Name", type: "input", key: "businessName" },
     { q: "Owner Name", type: "input", key: "ownerName" },
-    { 
-        q: "Phone Number", 
-        type: "input", 
-        key: "phone" 
-    },
+    { q: "Phone Number", type: "input", key: "phone" },
     { 
         q: "Business Type", 
         type: "select", 
@@ -301,16 +294,17 @@ const questions = [
         options: ["Mini Mart", "Pharmacy", "Wines & Spirits", "Hardware", "Beauty Shop"]
     },
     { 
-        q: "What is your biggest challenge?", 
-        type: "select",
+        q: "Biggest Challenge", 
+        type: "select", 
         key: "pain",
         options: [
             "Stock losses / theft",
             "No sales tracking",
             "Manual bookkeeping",
             "No idea on profit",
-            "Staff accountability issues",
-            "Everything is disorganized"
+            "Staff issues",
+            "Everything is disorganized",
+            "All of the above"
         ]
     },
     { 
@@ -321,6 +315,7 @@ const questions = [
     }
 ];
 
+/* START */
 function start() {
     document.getElementById("hero").style.display = "none";
     document.getElementById("wizard").style.display = "flex";
@@ -328,48 +323,59 @@ function start() {
     loadStep();
 }
 
+/* BUILD STEPS */
 function buildSteps() {
     let html = "";
     questions.forEach((_, i) => {
         html += `<div class="step" id="step-${i}">${i+1}</div>`;
     });
-    html += `<div class="step" id="step-${questions.length}">✓</div>`;
     document.getElementById("steps").innerHTML = html;
 }
 
+/* LOAD STEP */
 function loadStep() {
     let q = questions[step];
-
     document.getElementById("question").innerText = q.q;
 
     let html = "";
 
     if(q.type === "input") {
-        html = `<input id="field" value="${data[q.key]}"/>`;
+        html = `<input id="field" value="${data[q.key]}" />`;
     }
 
     if(q.type === "select") {
         html = `<select id="field">
-            <option disabled selected>Select option</option>
+            <option disabled selected>Select an option</option>
             ${q.options.map(o => `<option ${data[q.key]===o?"selected":""}>${o}</option>`).join("")}
         </select>`;
     }
 
     document.getElementById("inputArea").innerHTML = html;
 
-    updateStepsUI();
-
-    setTimeout(() => {
-        document.getElementById("field").focus();
-    }, 100);
+    updateSteps();
+    setTimeout(() => document.getElementById("field").focus(), 100);
 }
 
+/* VALIDATION (IMPORTANT) */
+function isValid() {
+    let value = document.getElementById("field").value;
+    return value && value.trim() !== "" && value !== "Select an option";
+}
+
+/* SAVE */
 function save() {
     data[questions[step].key] = document.getElementById("field").value;
 }
 
+/* NEXT (BLOCK IF EMPTY) */
 function nextStep() {
+    if(!isValid()) {
+        alert("Please complete this step before continuing.");
+        return;
+    }
+
     save();
+
     if(step < questions.length - 1) {
         step++;
         loadStep();
@@ -378,6 +384,7 @@ function nextStep() {
     }
 }
 
+/* BACK */
 function backStep() {
     if(step > 0) {
         step--;
@@ -385,7 +392,8 @@ function backStep() {
     }
 }
 
-function updateStepsUI() {
+/* STEP UI */
+function updateSteps() {
     questions.forEach((_, i) => {
         let el = document.getElementById(`step-${i}`);
         el.classList.remove("active","done");
@@ -393,18 +401,11 @@ function updateStepsUI() {
         if(i < step) el.classList.add("done");
         if(i === step) el.classList.add("active");
     });
-
-    let finish = document.getElementById(`step-${questions.length}`);
-    finish.classList.remove("active","done");
-
-    if(step === questions.length - 1) {
-        finish.classList.add("active");
-    }
 }
 
+/* FINISH */
 function finish() {
-    document.getElementById(`step-${questions.length}`).classList.add("done");
-    console.log("FINAL DATA:", data);
+    console.log("DATA:", data);
     alert("Thanks! We will contact you shortly.");
 }
 </script>
