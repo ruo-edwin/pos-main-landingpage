@@ -419,15 +419,11 @@ function finish() {
 
     fetch("https://script.google.com/macros/s/AKfycbyrZCxxhe6ZtIMz056rL5uhhu8FcQKXsLGgHM8i2OFtYNK1O7XSXiq2zq1vHVh2IQQKHg/exec", {
         method: "POST",
+        mode: "no-cors",
         body: params
-    })
-    .then(() => {
-        alert("Thanks! We will contact you shortly.");
-    })
-    .catch((err) => {
-        console.error(err);
-        alert("Something went wrong.");
     });
+
+    alert("Thanks! We will contact you shortly.");
 }
 </script>
 
