@@ -9,7 +9,7 @@
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: #0a0a0a;
+        background: radial-gradient(circle at top, #1a0b2e 0%, #000 60%);
         color: white;
     }
 
@@ -39,6 +39,7 @@
         padding: 80px 20px;
         max-width: 800px;
         margin: auto;
+        transition: all 0.3s ease;
     }
 
     .hero h1 {
@@ -66,8 +67,13 @@
     .container {
         max-width: 600px;
         margin: auto;
-        padding: 20px;
+        padding: 30px;
         display: none;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
     .progress {
@@ -80,7 +86,7 @@
     .bar {
         width: 100%;
         height: 6px;
-        background: #222;
+        background: rgba(255,255,255,0.08);
         margin: 10px 0 30px;
         border-radius: 5px;
         overflow: hidden;
@@ -89,7 +95,7 @@
     .fill {
         height: 100%;
         width: 0%;
-        background: white;
+        background: linear-gradient(90deg, #a855f7, #6366f1);
         transition: 0.3s;
     }
 
@@ -100,12 +106,17 @@
 
     input, select, textarea {
         width: 100%;
-        padding: 12px;
-        background: #111;
-        border: 1px solid #333;
+        padding: 14px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
         color: white;
-        border-radius: 8px;
-        margin-bottom: 20px;
+        border-radius: 10px;
+        outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        border: 1px solid #a855f7;
+        box-shadow: 0 0 10px rgba(168,85,247,0.3);
     }
 
     .nav {
@@ -120,14 +131,15 @@
         border-radius: 8px;
     }
 
-    .next {
-        background: white;
-        color: black;
+   .next {
+        background: linear-gradient(135deg, #a855f7, #6366f1);
+        color: white;
     }
 
     .back {
-        background: #222;
-        color: white;
+        background: transparent;
+        color: #aaa;
+        border: 1px solid rgba(255,255,255,0.15);
     }
 
     .submit {
@@ -135,12 +147,34 @@
         color: black;
         font-weight: bold;
     }
+    body::before {
+          content: "";
+          position: fixed;
+          top: -200px;
+          left: -200px;
+          width: 600px;
+          height: 600px;
+          background: rgba(128, 0, 255, 0.25);
+          filter: blur(120px);
+          z-index: -1;
+      }
 
+    body::after {
+        content: "";
+        position: fixed;
+        bottom: -200px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: rgba(0, 150, 255, 0.15);
+        filter: blur(120px);
+        z-index: -1;
+    }
 </style>
 </head>
 
 <body>
-
+  
 <!-- HEADER -->
 <div class="header">
     <div class="logo">RUO SYSTEMS</div>
@@ -202,9 +236,14 @@ const questions = [
 ];
 
 function start() {
-    document.getElementById("hero").style.display = "none";
-    document.getElementById("wizard").style.display = "block";
-    loadStep();
+    document.getElementById("hero").style.opacity = "0";
+    document.getElementById("hero").style.transform = "translateY(-20px)";
+
+    setTimeout(() => {
+        document.getElementById("hero").style.display = "none";
+        document.getElementById("wizard").style.display = "block";
+        loadStep();
+    }, 300);
 }
 
 function loadStep() {
@@ -231,6 +270,10 @@ function loadStep() {
     document.getElementById("inputArea").innerHTML = html;
 
     updateProgress();
+    setTimeout(() => {
+        const field = document.getElementById("field");
+        if(field) field.focus();
+    }, 100);
 }
 
 function save() {
