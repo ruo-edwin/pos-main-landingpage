@@ -405,8 +405,25 @@ function updateSteps() {
 
 /* FINISH */
 function finish() {
-    console.log("DATA:", data);
-    alert("Thanks! We will contact you shortly.");
+
+    save();
+
+    fetch("YOUR_GOOGLE_SCRIPT_URL_HERE", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.text())
+    .then(response => {
+        console.log("Saved:", response);
+        alert("Thanks! We will contact you shortly.");
+    })
+    .catch(err => {
+        console.error("Error:", err);
+        alert("Something went wrong, but your data was captured.");
+    });
 }
 </script>
 
