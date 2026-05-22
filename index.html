@@ -15,14 +15,14 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    color: #0f172a;
+    color: white;
     overflow-x: hidden;
 
-    /* ✅ BRIGHT SAAS BACKGROUND */
-    background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 40%, #f1f5f9 100%);
+    /* ✅ YOUR ORIGINAL RUO DARK PURPLE SYSTEM BACKGROUND (refined) */
+    background: radial-gradient(circle at top, #1a0b2e 0%, #070a12 60%, #05060a 100%);
 }
 
-/* soft modern glow (light SaaS style) */
+/* glow */
 body::before {
     content: "";
     position: fixed;
@@ -30,7 +30,7 @@ body::before {
     left: -200px;
     width: 600px;
     height: 600px;
-    background: rgba(99, 102, 241, 0.18);
+    background: rgba(168, 85, 247, 0.25);
     filter: blur(120px);
     z-index: -1;
 }
@@ -42,27 +42,34 @@ body::after {
     right: -200px;
     width: 600px;
     height: 600px;
-    background: rgba(168, 85, 247, 0.14);
+    background: rgba(59, 130, 246, 0.18);
     filter: blur(120px);
     z-index: -1;
 }
 
-/* HEADER */
+/* HEADER (BIGGER BRAND AREA) */
 .header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 18px 6%;
+    padding: 24px 7%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     z-index: 10;
 }
 
 .logo {
+    font-size: 18px;
     font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 14px;
-    color: #0f172a;
+    letter-spacing: 2px;
+}
+
+.circle {
+    width: 42px;
+    height: 42px;
+    background: white;
+    border-radius: 50%;
 }
 
 /* HERO */
@@ -78,28 +85,25 @@ body::after {
 
 .hero h1 {
     font-size: clamp(30px, 4vw, 56px);
-    font-weight: 700;
     max-width: 900px;
-    color: #0f172a;
+    font-weight: 700;
 }
 
 .hero p {
     margin-top: 12px;
     max-width: 600px;
-    color: #475569;
-    font-weight: 400;
+    color: #c4b5fd;
 }
 
 .btn {
     margin-top: 25px;
     padding: 14px 28px;
-    background: #4f46e5;
-    color: white;
+    background: white;
+    color: #0f172a;
     border: none;
     border-radius: 12px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 10px 25px rgba(79,70,229,0.25);
 }
 
 /* WIZARD */
@@ -114,58 +118,59 @@ body::after {
 /* CARD */
 .card {
     width: 100%;
-    max-width: 720px;
-    background: white;
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: 0 20px 60px rgba(15,23,42,0.08);
+    max-width: 760px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 34px;
+    backdrop-filter: blur(18px);
 }
 
-/* TIMELINE STEPPER */
+/* =========================
+   BIGGER TIMELINE STEPS
+========================= */
 .steps {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 28px;
     position: relative;
 }
 
-/* line behind steps */
+/* connecting line */
 .steps::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 0;
     right: 0;
-    height: 2px;
-    background: #e2e8f0;
-    z-index: 0;
+    height: 3px;
+    background: rgba(255,255,255,0.12);
 }
 
-/* step circle */
 .step {
-    width: 34px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: #e2e8f0;
+    background: rgba(255,255,255,0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 13px;
-    font-weight: 600;
-    color: #64748b;
+    font-weight: 700;
+    color: #cbd5e1;
     z-index: 1;
     transition: 0.3s;
+    font-size: 14px;
 }
 
-/* active step */
+/* active */
 .step.active {
-    background: #4f46e5;
+    background: #a855f7;
     color: white;
-    box-shadow: 0 0 0 6px rgba(79,70,229,0.15);
+    box-shadow: 0 0 0 8px rgba(168,85,247,0.18);
 }
 
-/* completed step */
+/* done */
 .step.done {
     background: #22c55e;
     color: white;
@@ -175,23 +180,36 @@ body::after {
 .question {
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 15px;
-    color: #0f172a;
+    margin-bottom: 18px;
 }
 
 /* INPUTS */
 input, select, textarea {
     width: 100%;
-    padding: 14px;
+    padding: 15px;
     border-radius: 12px;
-    border: 1px solid #e2e8f0;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(0,0,0,0.25);
+    color: white;
     font-size: 15px;
     outline: none;
 }
 
+/* dropdown hint effect */
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, white 50%),
+                      linear-gradient(135deg, white 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(1em + 2px),
+                         calc(100% - 15px) calc(1em + 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
 input:focus, select:focus, textarea:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 4px rgba(79,70,229,0.1);
+    border-color: #a855f7;
+    box-shadow: 0 0 0 4px rgba(168,85,247,0.15);
 }
 
 /* NAV */
@@ -204,21 +222,21 @@ input:focus, select:focus, textarea:focus {
 .back {
     padding: 10px 18px;
     border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    background: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: #ddd;
     cursor: pointer;
-    font-weight: 500;
-    color: #334155;
+    font-weight: 600;
 }
 
 .next {
     padding: 10px 18px;
     border-radius: 10px;
-    background: #4f46e5;
+    background: #a855f7;
     color: white;
     border: none;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 </style>
@@ -229,12 +247,13 @@ input:focus, select:focus, textarea:focus {
 <!-- HEADER -->
 <div class="header">
     <div class="logo">RUO SYSTEMS</div>
+    <div class="circle"></div>
 </div>
 
 <!-- HERO -->
 <div class="hero" id="hero">
-    <h1>Run Your Entire Business From One Smart System</h1>
-    <p>Sales, stock, staff & reports — simplified in one dashboard.</p>
+    <h1>Control Your Business Sales, Stock & Staff in One System</h1>
+    <p>Modern POS system built for business clarity, control and growth.</p>
     <button class="btn" onclick="start()">Check Eligibility</button>
 </div>
 
@@ -270,12 +289,36 @@ let data = {
 const questions = [
     { q: "Business Name", type: "input", key: "businessName" },
     { q: "Owner Name", type: "input", key: "ownerName" },
-    { q: "Phone Number", type: "input", key: "phone" },
-    { q: "Business Type", type: "select", key: "businessType",
-      options: ["Mini Mart", "Pharmacy", "Wines & Spirits", "Hardware", "Beauty Shop"] },
-    { q: "Current System", type: "select", key: "system",
-      options: ["Manual Book", "Excel", "Existing POS", "No System"] },
-    { q: "Biggest Pain Point", type: "textarea", key: "pain" }
+    { 
+        q: "Phone Number", 
+        type: "input", 
+        key: "phone" 
+    },
+    { 
+        q: "Business Type", 
+        type: "select", 
+        key: "businessType",
+        options: ["Mini Mart", "Pharmacy", "Wines & Spirits", "Hardware", "Beauty Shop"]
+    },
+    { 
+        q: "What is your biggest challenge?", 
+        type: "select",
+        key: "pain",
+        options: [
+            "Stock losses / theft",
+            "No sales tracking",
+            "Manual bookkeeping",
+            "No idea on profit",
+            "Staff accountability issues",
+            "Everything is disorganized"
+        ]
+    },
+    { 
+        q: "Current System", 
+        type: "select", 
+        key: "system",
+        options: ["Manual Book", "Excel", "Existing POS", "No System"]
+    }
 ];
 
 function start() {
@@ -285,20 +328,15 @@ function start() {
     loadStep();
 }
 
-/* BUILD TIMELINE STEPS */
 function buildSteps() {
     let html = "";
-
     questions.forEach((_, i) => {
         html += `<div class="step" id="step-${i}">${i+1}</div>`;
     });
-
     html += `<div class="step" id="step-${questions.length}">✓</div>`;
-
     document.getElementById("steps").innerHTML = html;
 }
 
-/* LOAD QUESTION */
 function loadStep() {
     let q = questions[step];
 
@@ -312,12 +350,9 @@ function loadStep() {
 
     if(q.type === "select") {
         html = `<select id="field">
+            <option disabled selected>Select option</option>
             ${q.options.map(o => `<option ${data[q.key]===o?"selected":""}>${o}</option>`).join("")}
         </select>`;
-    }
-
-    if(q.type === "textarea") {
-        html = `<textarea id="field">${data[q.key]}</textarea>`;
     }
 
     document.getElementById("inputArea").innerHTML = html;
@@ -329,15 +364,12 @@ function loadStep() {
     }, 100);
 }
 
-/* SAVE */
 function save() {
     data[questions[step].key] = document.getElementById("field").value;
 }
 
-/* NEXT */
 function nextStep() {
     save();
-
     if(step < questions.length - 1) {
         step++;
         loadStep();
@@ -346,7 +378,6 @@ function nextStep() {
     }
 }
 
-/* BACK */
 function backStep() {
     if(step > 0) {
         step--;
@@ -354,12 +385,9 @@ function backStep() {
     }
 }
 
-/* STEP UI LOGIC */
 function updateStepsUI() {
     questions.forEach((_, i) => {
         let el = document.getElementById(`step-${i}`);
-        if(!el) return;
-
         el.classList.remove("active","done");
 
         if(i < step) el.classList.add("done");
@@ -374,13 +402,11 @@ function updateStepsUI() {
     }
 }
 
-/* FINISH */
 function finish() {
     document.getElementById(`step-${questions.length}`).classList.add("done");
     console.log("FINAL DATA:", data);
-    alert("Thanks! We’ll contact you shortly.");
+    alert("Thanks! We will contact you shortly.");
 }
-
 </script>
 
 </body>
