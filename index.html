@@ -6,24 +6,60 @@
 <title>RUO Systems</title>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: radial-gradient(circle at top, #1a0b2e 0%, #000 60%);
         color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+        background: radial-gradient(circle at top, #1a0b2e 0%, #000 60%);
+    }
+
+    /* glowing background blobs */
+    body::before {
+        content: "";
+        position: fixed;
+        top: -200px;
+        left: -200px;
+        width: 600px;
+        height: 600px;
+        background: rgba(128, 0, 255, 0.25);
+        filter: blur(120px);
+        z-index: -1;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        bottom: -200px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: rgba(0, 150, 255, 0.15);
+        filter: blur(120px);
+        z-index: -1;
     }
 
     /* HEADER */
     .header {
         display: flex;
         justify-content: space-between;
-        padding: 20px 40px;
         align-items: center;
+        padding: 20px 5%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
     }
 
     .logo {
         font-weight: bold;
         letter-spacing: 2px;
+        font-size: 14px;
     }
 
     .circle {
@@ -33,23 +69,30 @@
         border-radius: 50%;
     }
 
-    /* HERO */
+    /* HERO FULL SCREEN */
     .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        padding: 80px 20px;
-        max-width: 800px;
-        margin: auto;
+        padding: 0 20px;
         transition: all 0.3s ease;
     }
 
     .hero h1 {
-        font-size: 42px;
+        font-size: clamp(26px, 4vw, 52px);
         font-weight: bold;
+        max-width: 900px;
+        line-height: 1.2;
     }
 
     .hero p {
         color: #aaa;
         margin-top: 15px;
+        font-size: clamp(14px, 1.5vw, 18px);
+        max-width: 600px;
     }
 
     .btn {
@@ -63,33 +106,38 @@
         border-radius: 10px;
     }
 
-    /* WIZARD */
+    /* WIZARD FULL SCREEN */
     .container {
-        max-width: 600px;
-        margin: auto;
-        padding: 30px;
         display: none;
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 20px;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        height: 100vh;
+        width: 100%;
+        padding: 120px 5% 40px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wizard-box {
+        width: 100%;
+        max-width: 700px;
     }
 
     .progress {
         display: flex;
         justify-content: space-between;
-        font-size: 12px;
+        font-size: 11px;
         color: #888;
+        margin-bottom: 10px;
     }
 
     .bar {
         width: 100%;
         height: 6px;
         background: rgba(255,255,255,0.08);
-        margin: 10px 0 30px;
         border-radius: 5px;
         overflow: hidden;
+        margin-bottom: 30px;
     }
 
     .fill {
@@ -100,8 +148,9 @@
     }
 
     .question {
-        font-size: 22px;
+        font-size: clamp(18px, 2vw, 24px);
         margin-bottom: 15px;
+        text-align: left;
     }
 
     input, select, textarea {
@@ -112,6 +161,7 @@
         color: white;
         border-radius: 10px;
         outline: none;
+        font-size: 16px;
     }
 
     input:focus, select:focus, textarea:focus {
@@ -122,6 +172,7 @@
     .nav {
         display: flex;
         justify-content: space-between;
+        margin-top: 20px;
     }
 
     .nav button {
@@ -131,7 +182,7 @@
         border-radius: 8px;
     }
 
-   .next {
+    .next {
         background: linear-gradient(135deg, #a855f7, #6366f1);
         color: white;
     }
@@ -142,39 +193,26 @@
         border: 1px solid rgba(255,255,255,0.15);
     }
 
-    .submit {
-        background: green;
-        color: black;
-        font-weight: bold;
-    }
-    body::before {
-          content: "";
-          position: fixed;
-          top: -200px;
-          left: -200px;
-          width: 600px;
-          height: 600px;
-          background: rgba(128, 0, 255, 0.25);
-          filter: blur(120px);
-          z-index: -1;
-      }
+    /* MOBILE */
+    @media (max-width: 600px) {
+        .header {
+            padding: 15px 20px;
+        }
 
-    body::after {
-        content: "";
-        position: fixed;
-        bottom: -200px;
-        right: -200px;
-        width: 600px;
-        height: 600px;
-        background: rgba(0, 150, 255, 0.15);
-        filter: blur(120px);
-        z-index: -1;
+        .progress {
+            font-size: 10px;
+        }
+
+        .wizard-box {
+            padding: 0 10px;
+        }
     }
+
 </style>
 </head>
 
 <body>
-  
+
 <!-- HEADER -->
 <div class="header">
     <div class="logo">RUO SYSTEMS</div>
@@ -190,26 +228,28 @@
 
 <!-- WIZARD -->
 <div class="container" id="wizard">
+    <div class="wizard-box">
 
-    <div class="progress">
-        <span>Business</span>
-        <span>Owner</span>
-        <span>Phone</span>
-        <span>Type</span>
-        <span>System</span>
-        <span>Pain</span>
+        <div class="progress">
+            <span>Business</span>
+            <span>Owner</span>
+            <span>Phone</span>
+            <span>Type</span>
+            <span>System</span>
+            <span>Pain</span>
+        </div>
+
+        <div class="bar"><div class="fill" id="fill"></div></div>
+
+        <div class="question" id="question"></div>
+        <div id="inputArea"></div>
+
+        <div class="nav">
+            <button class="back" onclick="backStep()">Back</button>
+            <button class="next" id="nextBtn" onclick="nextStep()">Next</button>
+        </div>
+
     </div>
-
-    <div class="bar"><div class="fill" id="fill"></div></div>
-
-    <div class="question" id="question"></div>
-    <div id="inputArea"></div>
-
-    <div class="nav">
-        <button class="back" onclick="backStep()">Back</button>
-        <button class="next" id="nextBtn" onclick="nextStep()">Next</button>
-    </div>
-
 </div>
 
 <script>
@@ -236,14 +276,9 @@ const questions = [
 ];
 
 function start() {
-    document.getElementById("hero").style.opacity = "0";
-    document.getElementById("hero").style.transform = "translateY(-20px)";
-
-    setTimeout(() => {
-        document.getElementById("hero").style.display = "none";
-        document.getElementById("wizard").style.display = "block";
-        loadStep();
-    }, 300);
+    document.getElementById("hero").style.display = "none";
+    document.getElementById("wizard").style.display = "flex";
+    loadStep();
 }
 
 function loadStep() {
@@ -268,8 +303,8 @@ function loadStep() {
     }
 
     document.getElementById("inputArea").innerHTML = html;
-
     updateProgress();
+
     setTimeout(() => {
         const field = document.getElementById("field");
         if(field) field.focus();
@@ -283,7 +318,6 @@ function save() {
 
 function nextStep() {
     save();
-
     if(step < questions.length - 1) {
         step++;
         loadStep();
@@ -306,13 +340,7 @@ function updateProgress() {
 
 function submit() {
     console.log("FINAL LEAD:", data);
-
     alert("Thanks! We will contact you shortly.");
-
-    // HERE you later connect:
-    // - Google Sheets API
-    // - Backend (FastAPI / Node)
-    // - WhatsApp redirect
 }
 </script>
 
