@@ -408,12 +408,18 @@ function finish() {
 
     save();
 
+    const formData = new FormData();
+
+    formData.append("businessName", data.businessName);
+    formData.append("ownerName", data.ownerName);
+    formData.append("phone", data.phone);
+    formData.append("businessType", data.businessType);
+    formData.append("pain", data.pain);
+    formData.append("system", data.system);
+
     fetch("https://script.google.com/macros/s/AKfycbyrZCxxhe6ZtIMz056rL5uhhu8FcQKXsLGgHM8i2OFtYNK1O7XSXiq2zq1vHVh2IQQKHg/exec", {
         method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-        }
+        body: formData
     });
 
     alert("Thanks! We will contact you shortly.");
