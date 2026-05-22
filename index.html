@@ -408,21 +408,26 @@ function finish() {
 
     save();
 
-    const formData = new FormData();
+    const params = new URLSearchParams();
 
-    formData.append("businessName", data.businessName);
-    formData.append("ownerName", data.ownerName);
-    formData.append("phone", data.phone);
-    formData.append("businessType", data.businessType);
-    formData.append("pain", data.pain);
-    formData.append("system", data.system);
+    params.append("businessName", data.businessName);
+    params.append("ownerName", data.ownerName);
+    params.append("phone", data.phone);
+    params.append("businessType", data.businessType);
+    params.append("pain", data.pain);
+    params.append("system", data.system);
 
     fetch("https://script.google.com/macros/s/AKfycbyrZCxxhe6ZtIMz056rL5uhhu8FcQKXsLGgHM8i2OFtYNK1O7XSXiq2zq1vHVh2IQQKHg/exec", {
         method: "POST",
-        body: formData
+        body: params
+    })
+    .then(() => {
+        alert("Thanks! We will contact you shortly.");
+    })
+    .catch((err) => {
+        console.error(err);
+        alert("Something went wrong.");
     });
-
-    alert("Thanks! We will contact you shortly.");
 }
 </script>
 
