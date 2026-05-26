@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>RUO Systems</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 *{
@@ -23,57 +22,59 @@ html{
 
 body{
     font-family:'Inter',sans-serif;
+    color:white;
+    overflow-x:hidden;
+
     background:
     radial-gradient(circle at top left, rgba(168,85,247,0.22), transparent 30%),
     radial-gradient(circle at bottom right, rgba(59,130,246,0.18), transparent 30%),
     #050816;
-    color:white;
-    overflow-x:hidden;
 }
 
-/* =========================
-BACKGROUND GLOW
-========================= */
+/* GLOW */
 
 body::before{
     content:"";
     position:fixed;
+    top:-250px;
+    left:-250px;
     width:600px;
     height:600px;
     background:rgba(168,85,247,0.18);
     filter:blur(120px);
-    top:-250px;
-    left:-200px;
     z-index:-1;
 }
 
 body::after{
     content:"";
     position:fixed;
-    width:500px;
-    height:500px;
-    background:rgba(37,99,235,0.15);
+    bottom:-250px;
+    right:-250px;
+    width:600px;
+    height:600px;
+    background:rgba(59,130,246,0.14);
     filter:blur(120px);
-    bottom:-200px;
-    right:-150px;
     z-index:-1;
 }
 
-/* =========================
-HEADER
-========================= */
+/* HEADER */
 
 .header{
     width:100%;
-    padding:26px 7%;
+    padding:28px 7%;
+    position:fixed;
+    top:0;
+    left:0;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    position:fixed;
-    top:0;
-    backdrop-filter:blur(14px);
+
+    backdrop-filter:blur(12px);
     background:rgba(5,8,22,0.45);
+
     border-bottom:1px solid rgba(255,255,255,0.05);
+
     z-index:100;
 }
 
@@ -83,338 +84,244 @@ HEADER
     letter-spacing:2px;
 }
 
-.demo-btn{
+.header-btn{
     padding:12px 22px;
-    border-radius:12px;
     border:none;
+    border-radius:12px;
+
     background:linear-gradient(135deg,#a855f7,#6366f1);
+
     color:white;
     font-weight:700;
     cursor:pointer;
+
     transition:0.3s;
-    box-shadow:0 10px 30px rgba(168,85,247,0.25);
 }
 
-.demo-btn:hover{
+.header-btn:hover{
     transform:translateY(-2px);
 }
 
-/* =========================
-HERO
-========================= */
+/* HERO */
 
 .hero{
     min-height:100vh;
+
     display:flex;
-    align-items:center;
     justify-content:center;
-    padding:140px 7% 100px;
+    align-items:center;
+
+    padding:130px 20px 80px;
 }
 
-.hero-wrapper{
-    max-width:1200px;
+.hero-content{
     width:100%;
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:60px;
-    align-items:center;
+    max-width:1100px;
+
+    text-align:center;
 }
 
 .badge{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
+    display:inline-block;
+
     padding:10px 18px;
+
     border-radius:999px;
+
     background:rgba(255,255,255,0.06);
+
     border:1px solid rgba(255,255,255,0.08);
+
     color:#c4b5fd;
-    margin-bottom:24px;
+
     font-size:14px;
+
+    margin-bottom:26px;
 }
 
 .hero h1{
-    font-size:clamp(42px,5vw,76px);
-    line-height:1.05;
-    font-weight:800;
-    margin-bottom:22px;
-}
+    font-size:clamp(40px,5vw,76px);
 
-.hero h1 span{
-    background:linear-gradient(to right,#ffffff,#a78bfa);
-    -webkit-background-clip:text;
-     background-clip:text;
-    -webkit-text-fill-color:transparent;
+    line-height:1.05;
+
+    font-weight:800;
+
+    max-width:950px;
+
+    margin:auto;
 }
 
 .hero p{
+    margin:24px auto 0;
+
+    max-width:720px;
+
+    color:#94a3b8;
+
     font-size:18px;
-    line-height:1.8;
-    color:#cbd5e1;
-    max-width:650px;
-}
 
-/* =========================
-CTA
-========================= */
-
-.hero-buttons{
-    display:flex;
-    gap:18px;
-    margin-top:36px;
-    flex-wrap:wrap;
-}
-
-.primary-btn{
-    padding:16px 30px;
-    border:none;
-    border-radius:14px;
-    background:linear-gradient(135deg,#a855f7,#6366f1);
-    color:white;
-    font-weight:700;
-    font-size:15px;
-    cursor:pointer;
-    transition:0.3s;
-    box-shadow:0 15px 40px rgba(168,85,247,0.35);
-}
-
-.primary-btn:hover{
-    transform:translateY(-3px);
-}
-
-.secondary-btn{
-    padding:16px 28px;
-    border-radius:14px;
-    border:1px solid rgba(255,255,255,0.12);
-    background:rgba(255,255,255,0.04);
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-}
-
-/* =========================
-VALUE CARDS
-========================= */
-
-.hero-card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:28px;
-    padding:32px;
-    backdrop-filter:blur(20px);
-    box-shadow:0 20px 60px rgba(0,0,0,0.45);
-}
-
-.card-title{
-    font-size:22px;
-    font-weight:700;
-    margin-bottom:28px;
-}
-
-.feature{
-    display:flex;
-    align-items:flex-start;
-    gap:16px;
-    margin-bottom:22px;
-}
-
-.feature-icon{
-    width:42px;
-    height:42px;
-    border-radius:12px;
-    background:linear-gradient(135deg,#a855f7,#6366f1);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:700;
-    flex-shrink:0;
-}
-
-.feature h4{
-    font-size:16px;
-    margin-bottom:6px;
-}
-
-.feature p{
-    font-size:14px;
     line-height:1.7;
-    color:#94a3b8;
 }
 
-/* =========================
-STATS
-========================= */
+/* VALUE GRID */
 
-.stats{
+.value-grid{
+    margin-top:55px;
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:28px;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:20px;
 }
 
-.stat-box{
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:18px;
-    padding:18px;
-    text-align:center;
-}
-
-.stat-box h3{
-    font-size:28px;
-    margin-bottom:6px;
-}
-
-.stat-box p{
-    color:#94a3b8;
-    font-size:13px;
-}
-
-/* =========================
-SECTION
-========================= */
-
-.section{
-    padding:90px 7%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.section-title h2{
-    font-size:48px;
-    margin-bottom:18px;
-}
-
-.section-title p{
-    color:#94a3b8;
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
-}
-
-/* =========================
-GRID
-========================= */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:24px;
-}
-
-.grid-card{
+.value-card{
     background:rgba(255,255,255,0.05);
+
     border:1px solid rgba(255,255,255,0.08);
+
     border-radius:24px;
-    padding:28px;
+
+    padding:30px;
+
+    backdrop-filter:blur(14px);
+
     transition:0.3s;
 }
 
-.grid-card:hover{
-    transform:translateY(-6px);
+.value-card:hover{
+    transform:translateY(-5px);
+
     border-color:rgba(168,85,247,0.4);
 }
 
-.grid-card h3{
-    margin-bottom:14px;
+.value-card h3{
     font-size:20px;
+
+    margin-bottom:10px;
 }
 
-.grid-card p{
+.value-card span{
     color:#94a3b8;
-    line-height:1.8;
+
     font-size:15px;
 }
 
-/* =========================
-FINAL CTA
-========================= */
+/* CTA */
 
-.final-cta{
-    margin:100px 7%;
-    padding:60px;
-    border-radius:32px;
-    background:
-    linear-gradient(135deg,rgba(168,85,247,0.18),rgba(59,130,246,0.12));
-    border:1px solid rgba(255,255,255,0.08);
-    text-align:center;
+.cta-btn{
+    margin-top:50px;
+
+    padding:18px 36px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#a855f7,#6366f1);
+
+    color:white;
+
+    font-weight:700;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+    box-shadow:0 20px 40px rgba(168,85,247,0.25);
 }
 
-.final-cta h2{
-    font-size:48px;
-    margin-bottom:18px;
+.cta-btn:hover{
+    transform:translateY(-3px);
 }
 
-.final-cta p{
-    color:#cbd5e1;
-    max-width:700px;
-    margin:auto;
-    line-height:1.8;
-}
-
-.final-cta button{
-    margin-top:30px;
-}
-
-/* =========================
-WIZARD
-========================= */
+/* WIZARD */
 
 .container{
     display:none;
+
     min-height:100vh;
+
     justify-content:center;
     align-items:center;
+
     padding:140px 20px 60px;
 }
+
+/* CARD */
 
 .card{
     width:100%;
     max-width:760px;
+
     background:rgba(255,255,255,0.06);
+
     border:1px solid rgba(255,255,255,0.1);
+
     border-radius:28px;
+
     padding:34px;
-    backdrop-filter:blur(24px);
+
+    backdrop-filter:blur(20px);
 }
+
+/* STEPS */
 
 .steps{
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     margin-bottom:32px;
+
     position:relative;
 }
 
 .steps::before{
     content:"";
+
     position:absolute;
+
     top:50%;
+
     left:44px;
+
     right:44px;
+
     height:3px;
+
     background:rgba(255,255,255,0.1);
+
     transform:translateY(-50%);
 }
 
 .step{
     width:60px;
     height:60px;
+
     border-radius:50%;
+
     background:rgba(255,255,255,0.08);
+
     display:flex;
+
     justify-content:center;
     align-items:center;
-    z-index:1;
+
     font-weight:700;
+
+    z-index:1;
+
     transition:0.3s;
 }
 
 .step.active{
     background:#a855f7;
+
     box-shadow:0 0 0 8px rgba(168,85,247,0.18);
 }
 
@@ -422,20 +329,34 @@ WIZARD
     background:#22c55e;
 }
 
+/* QUESTION */
+
 .question{
     font-size:24px;
-    margin-bottom:18px;
+
     font-weight:700;
+
+    margin-bottom:20px;
 }
 
-input,select{
+/* INPUTS */
+
+input,
+select{
     width:100%;
+
     padding:16px;
+
     border-radius:14px;
+
     border:1px solid rgba(255,255,255,0.1);
+
     background:rgba(255,255,255,0.04);
+
     color:white;
+
     font-size:15px;
+
     outline:none;
 }
 
@@ -443,71 +364,61 @@ input::placeholder{
     color:#94a3b8;
 }
 
+/* NAV */
+
 .nav{
     display:flex;
+
     justify-content:space-between;
+
     margin-top:30px;
 }
 
 .back{
     padding:14px 22px;
+
     border-radius:12px;
+
     border:1px solid rgba(255,255,255,0.1);
+
     background:transparent;
+
     color:white;
+
     cursor:pointer;
 }
 
 .next{
     padding:14px 22px;
+
     border:none;
+
     border-radius:12px;
+
     background:linear-gradient(135deg,#a855f7,#6366f1);
+
     color:white;
+
     font-weight:700;
+
     cursor:pointer;
 }
 
-/* =========================
-RESPONSIVE
-========================= */
+/* MOBILE */
 
-@media(max-width:950px){
-
-.hero-wrapper{
-    grid-template-columns:1fr;
-}
-
-.hero{
-    text-align:center;
-}
-
-.hero p{
-    margin:auto;
-}
-
-.hero-buttons{
-    justify-content:center;
-}
-
-.hero-card{
-    margin-top:20px;
-}
-
-.section-title h2{
-    font-size:36px;
-}
-
-.final-cta h2{
-    font-size:36px;
-}
-
-}
-
-@media(max-width:600px){
+@media(max-width:700px){
 
 .header{
-    padding:20px;
+    padding:22px 20px;
+}
+
+.logo{
+    font-size:18px;
+}
+
+.header-btn{
+    padding:10px 18px;
+    font-size:14px;
 }
 
 .hero{
@@ -518,22 +429,21 @@ RESPONSIVE
     font-size:42px;
 }
 
-.section{
-    padding:70px 20px;
+.hero p{
+    font-size:16px;
 }
 
-.final-cta{
-    margin:60px 20px;
-    padding:40px 24px;
-}
-
-.stats{
+.value-grid{
     grid-template-columns:1fr;
 }
 
+.card{
+    padding:24px;
+}
+
 .step{
-    width:50px;
-    height:50px;
+    width:48px;
+    height:48px;
 }
 
 .steps::before{
@@ -541,7 +451,12 @@ RESPONSIVE
     right:35px;
 }
 
+.question{
+    font-size:20px;
 }
+
+}
+
 </style>
 </head>
 
@@ -550,196 +465,78 @@ RESPONSIVE
 <!-- HEADER -->
 
 <div class="header">
-    <div class="logo">RUO SYSTEMS</div>
 
-    <button class="demo-btn" onclick="start()">
-        Book Free Demo
-    </button>
+<div class="logo">
+RUO SYSTEMS
+</div>
+
+<button class="header-btn" onclick="start()">
+Book Demo
+</button>
+
 </div>
 
 <!-- HERO -->
 
 <section class="hero" id="hero">
 
-<div class="hero-wrapper">
-
-<div>
+<div class="hero-content">
 
 <div class="badge">
-    Trusted POS Solution For Growing Businesses
+Modern POS For Retail Businesses
 </div>
 
 <h1>
-Structure. Control. <br>
-<span>Growth For Your Business.</span>
+Control Your Sales, Stock & Staff From One System
 </h1>
 
 <p>
-RUO Systems helps mini supermarkets, pharmacies, beauty shops and retail businesses manage stock, sales, staff and reporting from one modern system — giving you full visibility and control of your business operations.
+Built for mini supermarkets, pharmacies, beauty shops, wines & spirits and growing retail businesses.
 </p>
 
-<div class="hero-buttons">
+<!-- VALUE -->
 
-<button class="primary-btn" onclick="start()">
-    Book Free Demo
-</button>
+<div class="value-grid">
 
-<button class="secondary-btn" onclick="document.getElementById('features').scrollIntoView()">
-    Explore Features
-</button>
-
+<div class="value-card">
+<h3>Real-Time Sales</h3>
+<span>Track every sale instantly</span>
 </div>
 
-<div class="stats">
-
-<div class="stat-box">
-    <h3>24/7</h3>
-    <p>Support & Training</p>
-</div>
-
-<div class="stat-box">
-    <h3>Real-Time</h3>
-    <p>Stock & Sales Tracking</p>
-</div>
-
-<div class="stat-box">
-    <h3>Easy</h3>
-    <p>Fast & Simple To Use</p>
-</div>
-
-</div>
-
-</div>
-
-<!-- RIGHT CARD -->
-
-<div class="hero-card">
-
-<div class="card-title">
-What You Get With RUO Systems
-</div>
-
-<div class="feature">
-<div class="feature-icon">✓</div>
-<div>
-<h4>Full POS System</h4>
-<p>Manage sales, inventory, expenses, reports and staff from one centralized platform.</p>
-</div>
-</div>
-
-<div class="feature">
-<div class="feature-icon">✓</div>
-<div>
-<h4>Free Barcode Scanner</h4>
-<p>Speed up checkout and improve stock management accuracy in your business.</p>
-</div>
-</div>
-
-<div class="feature">
-<div class="feature-icon">✓</div>
-<div>
-<h4>Stock Take & Product Setup</h4>
-<p>We help you set up products, categories and organize your inventory professionally.</p>
-</div>
-</div>
-
-<div class="feature">
-<div class="feature-icon">✓</div>
-<div>
-<h4>Staff Training</h4>
-<p>Your team gets guided onboarding so everyone knows how to use the system confidently.</p>
-</div>
-</div>
-
-<div class="feature">
-<div class="feature-icon">✓</div>
-<div>
-<h4>Ongoing Support</h4>
-<p>We stay with you after installation to ensure smooth business operations and support.</p>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FEATURES -->
-
-<section class="section" id="features">
-
-<div class="section-title">
-<h2>Built For Modern Businesses</h2>
-
-<p>
-RUO Systems is designed to help business owners eliminate chaos, reduce losses and gain complete clarity on daily operations.
-</p>
-</div>
-
-<div class="grid">
-
-<div class="grid-card">
+<div class="value-card">
 <h3>Stock Control</h3>
-<p>
-Track inventory in real-time, reduce stock losses and know exactly what is moving in your business.
-</p>
+<span>Reduce losses & theft</span>
 </div>
 
-<div class="grid-card">
-<h3>Sales Reports</h3>
-<p>
-View daily, weekly and monthly performance reports with clear business insights.
-</p>
+<div class="value-card">
+<h3>Staff Management</h3>
+<span>Monitor staff activity</span>
 </div>
 
-<div class="grid-card">
-<h3>Staff Accountability</h3>
-<p>
-Monitor staff activity and improve transparency across your business operations.
-</p>
+<div class="value-card">
+<h3>Profit Reports</h3>
+<span>Know what makes money</span>
 </div>
 
-<div class="grid-card">
-<h3>Business Structure</h3>
-<p>
-Create organized workflows that make your business easier to manage and scale.
-</p>
+<div class="value-card">
+<h3>Barcode Scanning</h3>
+<span>Fast & accurate checkout</span>
 </div>
 
-<div class="grid-card">
-<h3>Fast Checkout</h3>
-<p>
-Serve customers faster using barcode scanning and a clean modern POS interface.
-</p>
-</div>
-
-<div class="grid-card">
-<h3>Profit Visibility</h3>
-<p>
-Understand what products generate profit and make better business decisions.
-</p>
+<div class="value-card">
+<h3>Setup & Support</h3>
+<span>Training and onboarding included</span>
 </div>
 
 </div>
 
-</section>
+<!-- CTA -->
 
-<!-- FINAL CTA -->
-
-<section class="final-cta">
-
-<h2>
-Ready To Bring Structure To Your Business?
-</h2>
-
-<p>
-Book a free demo with RUO Systems and see how your business can become more organized, efficient and easier to manage.
-</p>
-
-<button class="primary-btn" onclick="start()">
-    Book Your Free Demo
+<button class="cta-btn" onclick="start()">
+Book Free Demo
 </button>
+
+</div>
 
 </section>
 
@@ -786,53 +583,68 @@ let data = {
 
 const questions = [
 
-    { q: "Business Name", type: "input", key: "businessName" },
+{
+    q: "Business Name",
+    type: "input",
+    key: "businessName"
+},
 
-    { q: "Owner Name", type: "input", key: "ownerName" },
+{
+    q: "Owner Name",
+    type: "input",
+    key: "ownerName"
+},
 
-    { q: "Phone Number", type: "input", key: "phone" },
+{
+    q: "Phone Number",
+    type: "input",
+    key: "phone"
+},
 
-    {
-        q: "Business Type",
-        type: "select",
-        key: "businessType",
-        options: [
-            "Mini Mart",
-            "Pharmacy",
-            "Wines & Spirits",
-            "Hardware",
-            "Beauty Shop",
-            "Supermarket",
-            "Other"
-        ]
-    },
+{
+    q: "Business Type",
+    type: "select",
+    key: "businessType",
 
-    {
-        q: "Biggest Challenge",
-        type: "select",
-        key: "pain",
-        options: [
-            "Stock losses / theft",
-            "No sales tracking",
-            "Manual bookkeeping",
-            "No idea on profit",
-            "Staff issues",
-            "Everything is disorganized",
-            "All of the above"
-        ]
-    },
+    options: [
+        "Mini Mart",
+        "Pharmacy",
+        "Wines & Spirits",
+        "Hardware",
+        "Beauty Shop",
+        "Supermarket",
+        "Other"
+    ]
+},
 
-    {
-        q: "Current System",
-        type: "select",
-        key: "system",
-        options: [
-            "Manual Book",
-            "Excel",
-            "Existing POS",
-            "No System"
-        ]
-    }
+{
+    q: "Biggest Challenge",
+    type: "select",
+    key: "pain",
+
+    options: [
+        "Stock losses / theft",
+        "No sales tracking",
+        "Manual bookkeeping",
+        "No idea on profit",
+        "Staff issues",
+        "Everything is disorganized",
+        "All of the above"
+    ]
+},
+
+{
+    q: "Current System",
+    type: "select",
+    key: "system",
+
+    options: [
+        "Manual Book",
+        "Excel",
+        "Existing POS",
+        "No System"
+    ]
+}
 
 ];
 
@@ -840,97 +652,99 @@ const questions = [
 
 function start(){
 
-    document.getElementById("hero").style.display = "none";
+document.getElementById("hero").style.display = "none";
 
-    document.getElementById("features").style.display = "none";
+document.getElementById("wizard").style.display = "flex";
 
-    document.querySelector(".final-cta").style.display = "none";
+window.scrollTo(0,0);
 
-    document.getElementById("wizard").style.display = "flex";
+buildSteps();
 
-    window.scrollTo(0,0);
+loadStep();
 
-    buildSteps();
-
-    loadStep();
 }
 
 /* BUILD STEPS */
 
 function buildSteps(){
 
-    let html = "";
+let html = "";
 
-    questions.forEach((_,i)=>{
+questions.forEach((_,i)=>{
 
-        html += `<div class="step" id="step-${i}">
-        ${i+1}
-        </div>`;
+html += `
+<div class="step" id="step-${i}">
+${i+1}
+</div>
+`;
 
-    });
+});
 
-    document.getElementById("steps").innerHTML = html;
+document.getElementById("steps").innerHTML = html;
+
 }
 
 /* LOAD STEP */
 
 function loadStep(){
 
-    let q = questions[step];
+let q = questions[step];
 
-    document.getElementById("question").innerText = q.q;
+document.getElementById("question").innerText = q.q;
 
-    let html = "";
+let html = "";
 
-    if(q.type === "input"){
+if(q.type === "input"){
 
-        html = `
-        <input 
-        id="field"
-        value="${data[q.key]}"
-        placeholder="Enter here..."
-        />
-        `;
-    }
-
-    if(q.type === "select"){
-
-        html = `
-        <select id="field">
-
-        <option disabled selected>
-        Select an option
-        </option>
-
-        ${q.options.map(o => `
-        <option ${data[q.key]===o ? "selected" : ""}>
-        ${o}
-        </option>
-        `).join("")}
-
-        </select>
-        `;
-    }
-
-    document.getElementById("inputArea").innerHTML = html;
-
-    updateSteps();
-
-    setTimeout(()=>{
-        document.getElementById("field").focus();
-    },100);
+html = `
+<input
+id="field"
+value="${data[q.key]}"
+placeholder="Enter here..."
+/>
+`;
 
 }
 
-/* VALIDATE */
+if(q.type === "select"){
+
+html = `
+<select id="field">
+
+<option disabled selected>
+Select an option
+</option>
+
+${q.options.map(o => `
+<option ${data[q.key]===o ? "selected" : ""}>
+${o}
+</option>
+`).join("")}
+
+</select>
+`;
+
+}
+
+document.getElementById("inputArea").innerHTML = html;
+
+updateSteps();
+
+setTimeout(()=>{
+document.getElementById("field").focus();
+},100);
+
+}
+
+/* VALIDATION */
 
 function isValid(){
 
-    let value = document.getElementById("field").value;
+let value = document.getElementById("field").value;
 
-    return value &&
-    value.trim() !== "" &&
-    value !== "Select an option";
+return value &&
+value.trim() !== "" &&
+value !== "Select an option";
 
 }
 
@@ -938,8 +752,8 @@ function isValid(){
 
 function save(){
 
-    data[questions[step].key] =
-    document.getElementById("field").value;
+data[questions[step].key] =
+document.getElementById("field").value;
 
 }
 
@@ -947,26 +761,27 @@ function save(){
 
 function nextStep(){
 
-    if(!isValid()){
+if(!isValid()){
 
-        alert("Please complete this step.");
+alert("Please complete this step.");
 
-        return;
-    }
+return;
 
-    save();
+}
 
-    if(step < questions.length - 1){
+save();
 
-        step++;
+if(step < questions.length - 1){
 
-        loadStep();
+step++;
 
-    } else {
+loadStep();
 
-        finish();
+}else{
 
-    }
+finish();
+
+}
 
 }
 
@@ -974,13 +789,13 @@ function nextStep(){
 
 function backStep(){
 
-    if(step > 0){
+if(step > 0){
 
-        step--;
+step--;
 
-        loadStep();
+loadStep();
 
-    }
+}
 
 }
 
@@ -988,21 +803,21 @@ function backStep(){
 
 function updateSteps(){
 
-    questions.forEach((_,i)=>{
+questions.forEach((_,i)=>{
 
-        let el = document.getElementById(`step-${i}`);
+let el = document.getElementById(`step-${i}`);
 
-        el.classList.remove("active","done");
+el.classList.remove("active","done");
 
-        if(i < step){
-            el.classList.add("done");
-        }
+if(i < step){
+el.classList.add("done");
+}
 
-        if(i === step){
-            el.classList.add("active");
-        }
+if(i === step){
+el.classList.add("active");
+}
 
-    });
+});
 
 }
 
@@ -1021,18 +836,21 @@ params.append("businessType", data.businessType);
 params.append("pain", data.pain);
 params.append("system", data.system);
 
-fetch("https://script.google.com/macros/s/AKfycbyrZCxxhe6ZtIMz056rL5uhhu8FcQKXsLGgHM8i2OFtYNK1O7XSXiq2zq1vHVh2IQQKHg/exec", {
-    method: "POST",
-    mode: "no-cors",
-    body: params
-});
+fetch(
+"https://script.google.com/macros/s/AKfycbyrZCxxhe6ZtIMz056rL5uhhu8FcQKXsLGgHM8i2OFtYNK1O7XSXiq2zq1vHVh2IQQKHg/exec",
+{
+method:"POST",
+mode:"no-cors",
+body:params
+}
+);
 
 document.querySelector(".card").innerHTML = `
 
 <div style="text-align:center;padding:40px 10px;">
 
 <h2 style="font-size:38px;margin-bottom:18px;">
-Demo Request Received
+Request Received
 </h2>
 
 <p style="color:#cbd5e1;line-height:1.8;font-size:17px;">
@@ -1040,19 +858,20 @@ Thank you for your interest in RUO Systems.<br>
 Our team will contact you shortly to schedule your free demo.
 </p>
 
-<button 
+<button
 onclick="location.reload()"
 style="
 margin-top:30px;
-padding:14px 26px;
+padding:16px 30px;
 border:none;
 border-radius:14px;
 background:linear-gradient(135deg,#a855f7,#6366f1);
 color:white;
 font-weight:700;
 cursor:pointer;
-">
-Back To Homepage
+"
+>
+Back Home
 </button>
 
 </div>
