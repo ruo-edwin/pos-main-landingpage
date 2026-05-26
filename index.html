@@ -32,7 +32,6 @@ body{
 }
 
 /* GLOW */
-
 body::before{
     content:"";
     position:fixed;
@@ -58,7 +57,6 @@ body::after{
 }
 
 /* HEADER */
-
 .header{
     width:100%;
     padding:28px 7%;
@@ -74,7 +72,6 @@ body::after{
     background:rgba(5,8,22,0.45);
 
     border-bottom:1px solid rgba(255,255,255,0.05);
-
     z-index:100;
 }
 
@@ -88,371 +85,216 @@ body::after{
     padding:12px 22px;
     border:none;
     border-radius:12px;
-
     background:linear-gradient(135deg,#a855f7,#6366f1);
-
     color:white;
     font-weight:700;
     cursor:pointer;
-
-    transition:0.3s;
-}
-
-.header-btn:hover{
-    transform:translateY(-2px);
 }
 
 /* HERO */
-
 .hero{
     min-height:100vh;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     padding:130px 20px 80px;
 }
 
 .hero-content{
     width:100%;
     max-width:1100px;
-
     text-align:center;
 }
 
 .badge{
     display:inline-block;
-
     padding:10px 18px;
-
     border-radius:999px;
-
     background:rgba(255,255,255,0.06);
-
     border:1px solid rgba(255,255,255,0.08);
-
     color:#c4b5fd;
-
     font-size:14px;
-
     margin-bottom:26px;
 }
 
 .hero h1{
-    font-size:clamp(40px,5vw,76px);
-
+    font-size:clamp(32px,5vw,76px);
     line-height:1.05;
-
     font-weight:800;
-
     max-width:950px;
-
     margin:auto;
 }
 
 .hero p{
     margin:24px auto 0;
-
     max-width:720px;
-
     color:#94a3b8;
-
     font-size:18px;
-
     line-height:1.7;
 }
 
 /* VALUE GRID */
-
 .value-grid{
     margin-top:55px;
-
     display:grid;
-
     grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-
     gap:20px;
 }
 
 .value-card{
     background:rgba(255,255,255,0.05);
-
     border:1px solid rgba(255,255,255,0.08);
-
     border-radius:24px;
-
     padding:30px;
-
     backdrop-filter:blur(14px);
-
-    transition:0.3s;
-}
-
-.value-card:hover{
-    transform:translateY(-5px);
-
-    border-color:rgba(168,85,247,0.4);
 }
 
 .value-card h3{
     font-size:20px;
-
     margin-bottom:10px;
 }
 
 .value-card span{
     color:#94a3b8;
-
-    font-size:15px;
 }
 
 /* CTA */
-
 .cta-btn{
     margin-top:50px;
-
     padding:18px 36px;
-
     border:none;
-
     border-radius:16px;
-
     background:linear-gradient(135deg,#a855f7,#6366f1);
-
     color:white;
-
     font-weight:700;
-
     font-size:16px;
-
     cursor:pointer;
-
-    transition:0.3s;
-
-    box-shadow:0 20px 40px rgba(168,85,247,0.25);
 }
 
-.cta-btn:hover{
-    transform:translateY(-3px);
+/* OFFER SECTION WRAPPER */
+.offer-wrap{
+    margin-top:40px;
+}
+
+/* CORE BOX */
+.core-box{
+    max-width:650px;
+    margin:0 auto;
+    text-align:center;
+}
+
+/* CORE CARDS */
+.core-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-width:520px;
+    margin:20px auto 0;
+}
+
+.core-item{
+    background:rgba(255,255,255,0.03);
+    padding:14px 16px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.06);
+}
+
+/* BONUS */
+.bonus{
+    margin-top:35px;
+    background:linear-gradient(135deg, rgba(168,85,247,0.18), rgba(59,130,246,0.12));
+    border:1px solid rgba(168,85,247,0.28);
+    border-radius:26px;
+    padding:26px;
+    text-align:center;
+}
+
+/* PRICE */
+.price{
+    margin-top:35px;
+    text-align:center;
+}
+
+.price h2{
+    font-size:52px;
+    font-weight:800;
+}
+
+/* CTA AREA */
+.cta-area{
+    margin-top:28px;
+    text-align:center;
+}
+
+.cta-area p{
+    color:#cbd5e1;
+    max-width:650px;
+    margin:0 auto 18px;
 }
 
 /* WIZARD */
-
 .container{
     display:none;
-
     min-height:100vh;
-
     justify-content:center;
     align-items:center;
-
     padding:140px 20px 60px;
 }
-
-/* CARD */
 
 .card{
     width:100%;
     max-width:760px;
-
     background:rgba(255,255,255,0.06);
-
     border:1px solid rgba(255,255,255,0.1);
-
     border-radius:28px;
-
     padding:34px;
-
-    backdrop-filter:blur(20px);
-}
-
-/* STEPS */
-
-.steps{
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:32px;
-
-    position:relative;
-}
-
-.steps::before{
-    content:"";
-
-    position:absolute;
-
-    top:50%;
-
-    left:44px;
-
-    right:44px;
-
-    height:3px;
-
-    background:rgba(255,255,255,0.1);
-
-    transform:translateY(-50%);
-}
-
-.step{
-    width:60px;
-    height:60px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,0.08);
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    font-weight:700;
-
-    z-index:1;
-
-    transition:0.3s;
-}
-
-.step.active{
-    background:#a855f7;
-
-    box-shadow:0 0 0 8px rgba(168,85,247,0.18);
-}
-
-.step.done{
-    background:#22c55e;
-}
-
-/* QUESTION */
-
-.question{
-    font-size:24px;
-
-    font-weight:700;
-
-    margin-bottom:20px;
-}
-
-/* INPUTS */
-
-input,
-select{
-    width:100%;
-
-    padding:16px;
-
-    border-radius:14px;
-
-    border:1px solid rgba(255,255,255,0.1);
-
-    background:rgba(255,255,255,0.04);
-
-    color:white;
-
-    font-size:15px;
-
-    outline:none;
-}
-
-input::placeholder{
-    color:#94a3b8;
-}
-
-/* NAV */
-
-.nav{
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-top:30px;
-}
-
-.back{
-    padding:14px 22px;
-
-    border-radius:12px;
-
-    border:1px solid rgba(255,255,255,0.1);
-
-    background:transparent;
-
-    color:white;
-
-    cursor:pointer;
-}
-
-.next{
-    padding:14px 22px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:linear-gradient(135deg,#a855f7,#6366f1);
-
-    color:white;
-
-    font-weight:700;
-
-    cursor:pointer;
 }
 
 /* MOBILE */
-
-@media(max-width:700px){
+@media(max-width:768px){
 
 .header{
-    padding:22px 20px;
+    padding:20px;
 }
 
 .logo{
     font-size:18px;
 }
 
-.header-btn{
-    padding:10px 18px;
-    font-size:14px;
-}
-
 .hero{
-    padding:120px 20px 80px;
+    padding:110px 16px 60px;
 }
 
 .hero h1{
-    font-size:42px;
+    font-size:32px;
 }
 
 .hero p{
-    font-size:16px;
+    font-size:15px;
 }
 
 .value-grid{
     grid-template-columns:1fr;
 }
 
+.value-card{
+    padding:20px;
+}
+
+.cta-btn{
+    width:100%;
+}
+
 .card{
-    padding:24px;
+    padding:20px;
 }
 
-.step{
-    width:48px;
-    height:48px;
+.price h2{
+    font-size:40px;
 }
 
-.steps::before{
-    left:35px;
-    right:35px;
-}
-
-.question{
-    font-size:20px;
+.core-list{
+    max-width:100%;
 }
 
 }
@@ -463,17 +305,9 @@ input::placeholder{
 <body>
 
 <!-- HEADER -->
-
 <div class="header">
-
-<div class="logo">
-RUO SYSTEMS
-</div>
-
-<button class="header-btn" onclick="start()">
-Book Demo
-</button>
-
+<div class="logo">RUO SYSTEMS</div>
+<button class="header-btn" onclick="start()">Book Demo</button>
 </div>
 
 <!-- HERO -->
@@ -481,9 +315,7 @@ Book Demo
 
 <div class="hero-content">
 
-<div class="badge">
-We already know your problem 👇
-</div>
+<div class="badge">We already know your problem 👇</div>
 
 <h1>
 Running your shop feels disorganized, confusing and hard to control?
@@ -493,190 +325,52 @@ Running your shop feels disorganized, confusing and hard to control?
 Stock disappears. Sales are unclear. Staff can’t be tracked. At the end of the day, you’re not sure if you made profit or loss.
 <br><br>
 We built RUO Systems for exactly this.
-A simple POS system that gives you full control of your business — sales, stock, staff and profit — all in one place.
 </p>
 
-<!-- CONVERSATIONAL OFFER BLOCK -->
+<!-- OFFER -->
+<div class="offer-wrap">
 
-<div style="
-margin-top:35px;
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:20px;
-padding:25px;
-text-align:left;
-backdrop-filter:blur(12px);
-">
+<div class="core-box">
 
-<!-- PREMIUM OFFER SECTION (SIMPLIFIED) -->
+<h3>Everything You Need to Control Your Business</h3>
 
-<div style="
-margin-top:35px;
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(255,255,255,0.08);
-border-radius:24px;
-padding:28px;
-backdrop-filter:blur(14px);
-text-align:center;
-">
-
-<!-- HEADER -->
-<div style="text-align:center; margin-top:10px;">
-
-<h3 style="
-font-size:24px;
-margin-bottom:10px;
-font-weight:700;
-letter-spacing:-0.3px;
-">
-Everything You Need to Control Your Business
-</h3>
-
-<p style="
-color:#94a3b8;
-font-size:15px;
-line-height:1.7;
-max-width:620px;
-margin:0 auto 25px;
-">
-Stop guessing your sales, stock, and profit. Get full visibility and control of your business from one simple system.
+<p style="color:#94a3b8; margin-top:10px;">
+Stop guessing your sales, stock, and profit. Get full visibility and control.
 </p>
 
 </div>
 
-<!-- CORE VALUE POINTS -->
-<div style="
-margin-top:20px;
-display:flex;
-flex-direction:column;
-gap:10px;
-max-width:520px;
-margin-left:auto;
-margin-right:auto;
-">
-
-<div style="
-background:rgba(255,255,255,0.03);
-padding:14px 16px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,0.06);
-backdrop-filter:blur(10px);
-">
-✔ Know exactly what you sell and earn daily
+<!-- CORE -->
+<div class="core-list">
+<div class="core-item">✔ Know exactly what you sell and earn daily</div>
+<div class="core-item">✔ Stop stock losses and business confusion</div>
+<div class="core-item">✔ Track staff performance easily</div>
+<div class="core-item">✔ Make decisions using real business data</div>
 </div>
 
-<div style="
-background:rgba(255,255,255,0.03);
-padding:14px 16px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,0.06);
-backdrop-filter:blur(10px);
-">
-✔ Stop stock losses and business confusion
-</div>
-
-<div style="
-background:rgba(255,255,255,0.03);
-padding:14px 16px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,0.06);
-backdrop-filter:blur(10px);
-">
-✔ Track staff performance easily
-</div>
-
-<div style="
-background:rgba(255,255,255,0.03);
-padding:14px 16px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,0.06);
-backdrop-filter:blur(10px);
-">
-✔ Make decisions using real business data
-</div>
-
-</div>
-
-<!-- BONUS SECTION -->
-<div style="
-margin-top:35px;
-background:linear-gradient(135deg, rgba(168,85,247,0.18), rgba(59,130,246,0.12));
-border:1px solid rgba(168,85,247,0.28);
-border-radius:26px;
-padding:26px;
-text-align:center;
-backdrop-filter:blur(16px);
-max-width:650px;
-margin-left:auto;
-margin-right:auto;
-box-shadow:0 20px 60px rgba(0,0,0,0.25);
-">
-
-<div style="
-font-size:18px;
-font-weight:700;
-margin-bottom:12px;
-">
-🎁 Free Setup Bonuses Included
-</div>
-
-<div style="
-color:#e2e8f0;
-font-size:15px;
-line-height:1.8;
-">
-
-Free Stock Take Done During Installation + Free Barcode Scanner.<br><br>
-
-<span style="color:#c4b5fd; font-weight:600;">
-Everything is set up for you — ready to use from day one.
+<!-- BONUS -->
+<div class="bonus">
+<h3>🎁 Free Setup Bonuses Included</h3>
+<p style="margin-top:10px;color:#e2e8f0;">
+Free Stock Take + Free Barcode Scanner Setup during installation<br><br>
+<span style="color:#c4b5fd;font-weight:600;">
+Everything is ready for you from day one
 </span>
-
-</div>
-
+</p>
 </div>
 
 <!-- PRICE -->
-<div style="
-margin-top:35px;
-text-align:center;
-">
-
-<div style="color:#94a3b8; font-size:15px;">
-All this for
-</div>
-
-<div style="
-font-size:52px;
-font-weight:800;
-letter-spacing:-1px;
-margin-top:6px;
-">
-Ksh 50,000
-</div>
-
-<div style="color:#94a3b8; font-size:14px; margin-top:8px;">
-One-time setup • Fully deployed for your business
-</div>
-
+<div class="price">
+<p style="color:#94a3b8;">All this for</p>
+<h2>Ksh 50,000</h2>
+<p style="color:#94a3b8;">One-time setup • Fully deployed</p>
 </div>
 
 <!-- CTA -->
-<div style="
-margin-top:28px;
-text-align:center;
-">
+<div class="cta-area">
 
-<p style="
-color:#cbd5e1;
-font-size:15px;
-margin-bottom:18px;
-max-width:650px;
-margin-left:auto;
-margin-right:auto;
-line-height:1.6;
-">
-If this interest you book a free demo call with our team. We’ll understand your business needs and show you how RUO Systems can help you gain control and grow your business.
+<p>
+If this interest you book a free demo call with our team. We’ll show you everything in detail.
 </p>
 
 <button class="cta-btn" onclick="start()">
@@ -688,38 +382,23 @@ Book Free Demo Call
 </div>
 
 </div>
-
-</div>
-
 </section>
 
-
 <!-- WIZARD -->
-
 <div class="container" id="wizard">
 
 <div class="card">
 
 <div class="steps" id="steps"></div>
-
 <div class="question" id="question"></div>
-
 <div id="inputArea"></div>
 
 <div class="nav">
-
-<button class="back" onclick="backStep()">
-Back
-</button>
-
-<button class="next" onclick="nextStep()">
-Next
-</button>
-
+<button class="back" onclick="backStep()">Back</button>
+<button class="next" onclick="nextStep()">Next</button>
 </div>
 
 </div>
-
 </div>
 
 <script>
@@ -1035,6 +714,7 @@ Back Home
 }
 
 </script>
+
 
 </body>
 </html>
