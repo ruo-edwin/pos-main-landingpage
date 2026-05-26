@@ -376,25 +376,7 @@ body::after{
     letter-spacing:-0.3px;
 }
 
-/* INPUTS */
-input,
-select{
-    width:100%;
-    padding:16px 14px;
-    border-radius:14px;
-    border:1px solid rgba(255,255,255,0.08);
-    background:rgba(255,255,255,0.04);
-    color:white;
-    font-size:15px;
-    outline:none;
-    transition:0.3s;
-}
 
-input:focus,
-select:focus{
-    border-color:rgba(168,85,247,0.6);
-    box-shadow:0 0 0 4px rgba(168,85,247,0.12);
-}
 
 /* NAVIGATION */
 .nav{
@@ -454,6 +436,55 @@ select:focus{
     flex-direction:column;
 }
 
+}
+input,
+select{
+    width:100%;
+    padding:16px 14px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.10);
+
+    background:rgba(255,255,255,0.06);
+    color:#ffffff;
+
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+
+    /* important fix */
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+}
+
+/* FIX: dropdown text visibility (placeholder-like option) */
+select option{
+    background:#0b1020;   /* deep dark background */
+    color:#ffffff;        /* white text */
+}
+
+/* optional: improve placeholder option */
+select option[disabled]{
+    color:#94a3b8;
+}
+
+/* focus state */
+input:focus,
+select:focus{
+    border-color:rgba(168,85,247,0.7);
+    box-shadow:0 0 0 4px rgba(168,85,247,0.15);
+}
+
+/* improve dropdown arrow visibility (optional premium touch) */
+select{
+    background-image:
+    linear-gradient(45deg, transparent 50%, #c4b5fd 50%),
+    linear-gradient(135deg, #c4b5fd 50%, transparent 50%);
+    background-position:
+    calc(100% - 20px) center,
+    calc(100% - 15px) center;
+    background-size:5px 5px, 5px 5px;
+    background-repeat:no-repeat;
 }
 </style>
 </head>
@@ -700,7 +731,7 @@ if(q.type === "select"){
 html = `
 <select id="field">
 
-<option disabled selected>
+<option value="" disabled selected hidden>
 Select an option
 </option>
 
