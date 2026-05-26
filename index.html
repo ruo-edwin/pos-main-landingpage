@@ -714,61 +714,93 @@ document.getElementById("question").innerText = q.q;
 
 let html = "";
 
+/* INPUT TYPE */
 if(q.type === "input"){
 
-html = `
-<input
-id="field"
-value="${data[q.key]}"
-placeholder="Enter here..."
-/>
-`;
+    let inputType = "text";
 
+    // special handling for phone
+    let placeholder = "Enter here...";
+
+    if(q.key === "phone"){
+        inputType = "tel";
+        placeholder = "e.g. 0712345678 or +254712345678";
+    }
+
+    html = `
+    <input
+        id="field"
+        type="${inputType}"
+        value="${data[q.key]}"
+        placeholder="${placeholder}"
+        autocomplete="off"
+    />
+    `;
 }
 
+/* SELECT TYPE */
 if(q.type === "select"){
 
-html = `
-<select id="field">
+    html = `
+    <select id="field">
 
-<option value="" disabled selected hidden>
-Select an option
-</option>
+        <option value="" disabled selected hidden>
+            Select an option
+        </option>
 
-${q.options.map(o => `
-<option ${data[q.key]===o ? "selected" : ""}>
-${o}
-</option>
-`).join("")}
+        ${q.options.map(o => `
+            <option ${data[q.key] === o ? "selected" : ""}>
+                ${o}
+            </option>
+        `).join("")}
 
-</select>
-`;
-
+    </select>
+    `;
 }
 
 document.getElementById("inputArea").innerHTML = html;
 
+/* STEP UI UPDATE */
 updateSteps();
 
-setTimeout(()=>{
-let el = document.getElementById("field");
-if(el){
-el.focus({ preventScroll: true });
-}
-},150);
+/* FOCUS INPUT (safe + smooth) */
+setTimeout(() => {
+    let el = document.getElementById("field");
+    if(el){
+        el.focus({ preventScroll: true });
+    }
+}, 120);
 
 }
-
 /* VALIDATION */
 
 function isValid(){
 
-let value = document.getElementById("field").value;
+let value = document.getElementById("field").value.trim();
+let key = questions[step].key;
 
-return value &&
-value.trim() !== "" &&
-value !== "Select an option";
+/* empty check */
+if(!value || value === "Select an option"){
+    return false;
+}
 
+/* PHONE VALIDATION */
+if(key === "phone"){
+
+    // Kenyan formats:
+    // 07XXXXXXXX
+    // +2547XXXXXXXX
+    // 01XXXXXXXX (optional newer ranges)
+
+    const kenyanPhoneRegex = /^(?:\+254|0)[17]\d{8}$/;
+
+    if(!kenyanPhoneRegex.test(value)){
+        alert("Please enter a valid Kenyan phone number (e.g. 0712345678 or +254712345678)");
+        return false;
+    }
+}
+
+return true;
 }
 
 /* SAVE */
