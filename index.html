@@ -13,6 +13,24 @@
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "x6ahjtjgk7");
 </script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1009544078142829');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1009544078142829&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -502,7 +520,8 @@ select{
 <div class="header">
 <div class="logo">RUO SYSTEMS</div>
 
-<button class="header-btn" onclick="start()">Book Demo</button>
+<button class="header-btn"
+onclick="trackDemo(); start();">Book Demo</button>
 </div>
 
 <!-- HERO -->
@@ -568,7 +587,8 @@ Everything is ready for you from day one
 If this interest you book a free demo call with our team. We’ll show you everything in detail.
 </p>
 
-<button class="cta-btn" onclick="start()">
+<button class="cta-btn"
+onclick="trackDemo(); start();">
 Book Free Demo Call
 </button>
 
@@ -889,6 +909,9 @@ el.classList.add("active");
 function finish(){
 
 save();
+if(typeof fbq !== "undefined"){
+    fbq('track','Lead');
+}
 
 const params = new URLSearchParams();
 
@@ -942,7 +965,13 @@ Back Home
 `;
 
 }
+function trackDemo(){
 
+if(typeof fbq !== "undefined"){
+    fbq('track','Lead');
+}
+
+}
 </script>
 
 
