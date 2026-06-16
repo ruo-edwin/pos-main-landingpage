@@ -49,9 +49,36 @@ nav {
   max-width: 1100px;
   margin: auto;
   padding: 70px 20px 30px;
-  text-align: center;
 }
 
+/* NEW: HERO LAYOUT */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+/* LEFT */
+.hero-left {
+  flex: 1;
+}
+
+/* RIGHT IMAGE */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* BADGE */
 .badge {
   display: inline-block;
   background: #eef2ff;
@@ -63,6 +90,7 @@ nav {
   font-weight: 500;
 }
 
+/* TEXT */
 .hero h1 {
   font-size: 48px;
   font-weight: 800;
@@ -73,10 +101,10 @@ nav {
 .hero p {
   font-size: 18px;
   color: #4b5563;
-  max-width: 700px;
-  margin: auto;
+  max-width: 600px;
 }
 
+/* CTA */
 .cta-row {
   margin-top: 25px;
 }
@@ -98,7 +126,7 @@ nav {
   text-decoration: none;
 }
 
-/* TRUST STRIP */
+/* TRUST */
 .trust {
   max-width: 1100px;
   margin: 30px auto;
@@ -111,7 +139,7 @@ nav {
   font-size: 14px;
 }
 
-/* PROOF SECTION */
+/* PROOF */
 .proof {
   max-width: 1100px;
   margin: auto;
@@ -173,11 +201,7 @@ nav {
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-.feature h3 {
-  margin-bottom: 10px;
-}
-
-/* FINAL CTA */
+/* FINAL */
 .final {
   text-align: center;
   padding: 80px 20px;
@@ -188,11 +212,52 @@ nav {
   margin-bottom: 10px;
 }
 
+/* FOOTER */
 footer {
   text-align: center;
   padding: 30px;
   font-size: 13px;
   color: #9ca3af;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+@media (max-width: 900px) {
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 16px;
+    margin: auto;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .secondary {
+    margin-left: 0;
+  }
+
+  .hero-right {
+    order: 3; /* ensures image goes BELOW CTA */
+    margin-top: 20px;
+  }
+
+  .hero-image {
+    max-width: 320px;
+  }
 }
 </style>
 </head>
@@ -207,21 +272,36 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge">Business Automation & Growth Systems</div>
 
-  <h1>Build Systems That Run Your Business On Autopilot</h1>
+  <div class="hero-container">
 
-  <p>
-    We help businesses automate operations, capture more leads, and track performance using simple but powerful digital systems.
-  </p>
+    <!-- LEFT -->
+    <div class="hero-left">
 
-  <div class="cta-row">
-    <a class="cta" href="#">Get Free Strategy Call</a>
-    <a class="secondary" href="#">See How It Works</a>
+      <div class="badge">Business Automation & Growth Systems</div>
+
+      <h1>Build Systems That Run Your Business On Autopilot</h1>
+
+      <p>
+        We help businesses automate operations, capture leads, and track performance using simple digital systems.
+      </p>
+
+      <div class="cta-row">
+        <a class="cta" href="#">Get Free Strategy Call</a>
+        <a class="secondary" href="#">See How It Works</a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="hero-right">
+      <img class="hero-image" src="https://via.placeholder.com/500x400" alt="Dashboard Preview">
+    </div>
+
   </div>
 </section>
 
-<!-- TRUST STRIP -->
+<!-- TRUST -->
 <div class="trust">
   <div>✔ No-Code Systems</div>
   <div>✔ CRM Setup</div>
@@ -234,28 +314,27 @@ footer {
 
   <div class="card">
     <div class="stars">★★★★★</div>
-    <p>“We started tracking all leads automatically and doubled conversions in 2 weeks.”</p>
+    <p>“We doubled conversions in 2 weeks after automation setup.”</p>
   </div>
 
   <div class="card">
     <div class="stars">★★★★★</div>
-    <p>“Everything in our business is now organized and measurable.”</p>
+    <p>“Everything is now organized and trackable.”</p>
   </div>
 
   <div class="card">
     <div class="stars">★★★★★</div>
-    <p>“Best system setup we’ve had — saved hours every day.”</p>
+    <p>“Saved us hours every single day.”</p>
   </div>
 
 </section>
 
-<!-- SECTION TITLE -->
+<!-- FEATURES -->
 <div class="section-title">
-  <h2>What We Build For You</h2>
-  <p>Simple systems that replace manual work and help you scale faster</p>
+  <h2>What We Build</h2>
+  <p>Simple systems that replace manual work and scale your business</p>
 </div>
 
-<!-- FEATURES -->
 <section class="features">
 
   <div class="feature">
@@ -265,12 +344,12 @@ footer {
 
   <div class="feature">
     <h3>Business Dashboards</h3>
-    <p>See your sales, performance, and operations in one place.</p>
+    <p>See all your metrics in one place.</p>
   </div>
 
   <div class="feature">
     <h3>Automation Flows</h3>
-    <p>Remove repetitive tasks using smart automation systems.</p>
+    <p>Remove repetitive tasks and save time.</p>
   </div>
 
 </section>
@@ -279,7 +358,7 @@ footer {
 <section class="final">
   <h2>Ready to simplify your business?</h2>
   <p style="color:#6b7280; margin-bottom:20px;">
-    Book a free call and we’ll map out your system.
+    Book a free call and we’ll map your system.
   </p>
 
   <a class="cta" href="#">Book Free Consultation</a>
