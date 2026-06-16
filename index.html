@@ -381,46 +381,74 @@ cursor:pointer;
   padding: 80px 20px;
 }
 
-.offer-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-top: 30px;
+.offer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 60px;
 }
 
-.offer-left, .offer-right {
-  background: white;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+.offer-item.reverse {
+  flex-direction: row-reverse;
 }
 
-.offer h3 {
-  margin-bottom: 15px;
-  font-size: 18px;
+.offer-text {
+  flex: 1;
+}
+
+.offer-text h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
   color: #111827;
 }
 
-.offer ul {
+.offer-text p {
+  color: #4b5563;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.offer-text ul {
   list-style: none;
   padding: 0;
 }
 
-.offer li {
+.offer-text li {
   margin-bottom: 10px;
   font-size: 14px;
-  color: #4b5563;
+  color: #374151;
 }
 
-.offer-cta {
-  text-align: center;
-  margin-top: 30px;
+.offer-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
-/* MOBILE */
+.offer-image img {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* MOBILE OPTIMIZATION */
 @media (max-width: 900px) {
-  .offer-box {
-    grid-template-columns: 1fr;
+
+  .offer-item,
+  .offer-item.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .offer-image {
+    order: -1;
+  }
+
+  .offer-text ul {
+    text-align: left;
+    display: inline-block;
   }
 }
 </style>
@@ -515,38 +543,84 @@ cursor:pointer;
   </div>
 
 </section>
-<!-- OFFER SECTION -->
+
+
+<!-- OFFER SECTION (UPGRADED PREMIUM VERSION) -->
 <section class="offer">
 
   <div class="section-title">
-    <h2>Get Your Business Fully Organized in 48 Hours</h2>
-    <p>We install a complete POS system that helps you track stock, sales, and profit in real time.</p>
+    <h2>Everything You Get With Ruo POS</h2>
+    <p>A complete system + tools that remove manual work from your business</p>
   </div>
 
-  <div class="offer-box">
+  <!-- 1. POS SYSTEM -->
+  <div class="offer-item">
 
-    <div class="offer-left">
-      <h3>What you get</h3>
+    <div class="offer-text">
+      <h3>📊 Smart POS System</h3>
+      <p>
+        Manage everything in one place — sales, stock, and profits in real time.
+        No more notebooks or guessing what is selling.
+      </p>
 
       <ul>
-        <li>✔ Inventory tracking system</li>
-        <li>✔ Sales recording dashboard</li>
-        <li>✔ Profit overview in real time</li>
-        <li>✔ Easy POS for staff usage</li>
-        <li>✔ Mobile + desktop access</li>
+        <li>✔ Real-time sales tracking</li>
+        <li>✔ Inventory auto updates</li>
+        <li>✔ Profit visibility anytime</li>
+        <li>✔ Works on phone & laptop</li>
       </ul>
     </div>
 
-    <div class="offer-right">
-      <h3>Why businesses choose us</h3>
+    <div class="offer-image">
+      <img src="pos-system.png" alt="POS System">
+    </div>
+
+  </div>
+
+  <!-- 2. BARCODE SCANNER -->
+  <div class="offer-item reverse">
+
+    <div class="offer-text">
+      <h3>📦 Free Barcode Scanner Setup</h3>
+      <p>
+        Speed up sales and stock updates with barcode scanning.
+        Reduce human errors and serve customers faster.
+      </p>
 
       <ul>
-        <li>✔ No technical skills needed</li>
-        <li>✔ We set everything up for you</li>
-        <li>✔ Training included for staff</li>
-        <li>✔ Ongoing support</li>
-        <li>✔ Fast setup (24–48 hours)</li>
+        <li>✔ Faster checkout process</li>
+        <li>✔ Accurate stock deduction</li>
+        <li>✔ Easy product lookup</li>
+        <li>✔ Staff friendly (no training stress)</li>
       </ul>
+    </div>
+
+    <div class="offer-image">
+      <img src="barcode-scanner.png" alt="Barcode Scanning">
+    </div>
+
+  </div>
+
+  <!-- 3. STOCK TAKE -->
+  <div class="offer-item">
+
+    <div class="offer-text">
+      <h3>📋 Free Stock Take System</h3>
+      <p>
+        Know exactly what is in your shop without manual counting stress.
+        We help you digitize your stock in one setup.
+      </p>
+
+      <ul>
+        <li>✔ Quick stock audits</li>
+        <li>✔ Reduce stock loss</li>
+        <li>✔ Easy re-order decisions</li>
+        <li>✔ Works monthly or weekly</li>
+      </ul>
+    </div>
+
+    <div class="offer-image">
+      <img src="stock-take.png" alt="Stock Take">
     </div>
 
   </div>
@@ -556,6 +630,7 @@ cursor:pointer;
   </div>
 
 </section>
+
 <!-- FEATURES -->
 <div class="section-title">
   <h2>What We Build</h2>
