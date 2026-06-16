@@ -586,7 +586,7 @@ cursor:pointer;
 
   <a
     class="cta"
-    href="https://wa.me/2547XXXXXXXX"
+    href="https://wa.me/254714675719"
     target="_blank"
   >
     Chat on WhatsApp
@@ -631,6 +631,9 @@ function closeWizard() {
   document.getElementById('wizardModal').style.display = 'none';
 }
 
+
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx4-OmxQGpPInz-k8PYwZ7smRL9o8bQsZPxGIhfGGR1eG-LFvSG92RMuee0LPnkBBMQwQ/exec";
+
 function submitForm() {
 
   const data = {
@@ -643,17 +646,32 @@ function submitForm() {
     email: document.getElementById('email').value
   };
 
-  console.log(data);
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(response => {
 
-  document.querySelectorAll('.step').forEach(step => {
-    step.classList.remove('active');
+    console.log("Saved:", response);
+
+    document.querySelectorAll('.step').forEach(step => {
+      step.classList.remove('active');
+    });
+
+    document.getElementById('successStep').classList.add('active');
+
+    updateStepIndicator("Done");
+
+  })
+  .catch(err => {
+    console.error("Error:", err);
+    alert("Something went wrong. Please try again.");
   });
 
-  document.getElementById('successStep').classList.add('active');
-
-  updateStepIndicator("Done");
-
 }
+
+
 
 window.onclick = function(event) {
   const modal = document.getElementById('wizardModal');
