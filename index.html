@@ -591,6 +591,63 @@ cursor:pointer;
   </div>
 
 </div>
+<script>
 
+function openWizard() {
+  document.getElementById('wizardModal').style.display = 'flex';
+
+  document.querySelectorAll('.step').forEach(step => {
+    step.classList.remove('active');
+  });
+
+  document.getElementById('step1').classList.add('active');
+}
+
+function closeWizard() {
+  document.getElementById('wizardModal').style.display = 'none';
+}
+
+function nextStep(stepNumber) {
+
+  document.querySelectorAll('.step').forEach(step => {
+    step.classList.remove('active');
+  });
+
+  document.getElementById('step' + stepNumber).classList.add('active');
+}
+
+function submitForm() {
+
+  const data = {
+    businessType: document.getElementById('businessType').value,
+    businessName: document.getElementById('businessName').value,
+    stockMethod: document.getElementById('stockMethod').value,
+    productCount: document.getElementById('productCount').value,
+    fullName: document.getElementById('fullName').value,
+    phone: document.getElementById('phone').value,
+    email: document.getElementById('email').value
+  };
+
+  console.log(data);
+
+  document.querySelectorAll('.step').forEach(step => {
+    step.classList.remove('active');
+  });
+
+  document.getElementById('successStep').classList.add('active');
+
+}
+
+window.onclick = function(event) {
+
+  const modal = document.getElementById('wizardModal');
+
+  if (event.target === modal) {
+    closeWizard();
+  }
+
+};
+
+</script>
 </body>
 </html>
