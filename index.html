@@ -369,6 +369,12 @@ font-size:28px;
 cursor:pointer;
 }
 
+.step-indicator{
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
 </style>
 </head>
 
@@ -502,11 +508,12 @@ cursor:pointer;
 </footer>
 <div id="wizardModal" class="wizard-modal">
 
-  <div class="wizard-box">
+<div class="wizard-box">
 
-```
 <span class="close-btn" onclick="closeWizard()">×</span>
-
+<div class="step-indicator">
+    Step <span id="currentStep">1</span> / 3
+</div>
 <!-- STEP 1 -->
 <div class="step active" id="step1">
 
@@ -586,25 +593,15 @@ cursor:pointer;
   </a>
 
 </div>
-```
 
-  </div>
+
+</div>
 
 </div>
 <script>
 
-function openWizard() {
-  document.getElementById('wizardModal').style.display = 'flex';
-
-  document.querySelectorAll('.step').forEach(step => {
-    step.classList.remove('active');
-  });
-
-  document.getElementById('step1').classList.add('active');
-}
-
-function closeWizard() {
-  document.getElementById('wizardModal').style.display = 'none';
+function updateStepIndicator(step) {
+  document.getElementById('currentStep').innerText = step;
 }
 
 function nextStep(stepNumber) {
@@ -614,6 +611,24 @@ function nextStep(stepNumber) {
   });
 
   document.getElementById('step' + stepNumber).classList.add('active');
+
+  updateStepIndicator(stepNumber);
+}
+
+function openWizard() {
+  document.getElementById('wizardModal').style.display = 'flex';
+
+  document.querySelectorAll('.step').forEach(step => {
+    step.classList.remove('active');
+  });
+
+  document.getElementById('step1').classList.add('active');
+
+  updateStepIndicator(1);
+}
+
+function closeWizard() {
+  document.getElementById('wizardModal').style.display = 'none';
 }
 
 function submitForm() {
@@ -636,16 +651,16 @@ function submitForm() {
 
   document.getElementById('successStep').classList.add('active');
 
+  updateStepIndicator("Done");
+
 }
 
 window.onclick = function(event) {
-
   const modal = document.getElementById('wizardModal');
 
   if (event.target === modal) {
     closeWizard();
   }
-
 };
 
 </script>
