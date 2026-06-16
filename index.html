@@ -44,39 +44,6 @@ nav {
   font-weight: 500;
 }
 
-/* HERO */
-.hero {
-  max-width: 1100px;
-  margin: auto;
-  padding: 70px 20px 30px;
-}
-
-/* NEW: HERO LAYOUT */
-.hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-}
-
-/* LEFT */
-.hero-left {
-  flex: 1;
-}
-
-/* RIGHT IMAGE */
-.hero-right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-image {
-  width: 100%;
-  max-width: 420px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
 
 /* BADGE */
 .badge {
@@ -90,26 +57,69 @@ nav {
   font-weight: 500;
 }
 
-/* TEXT */
+/* FORCE HERO TO FIT ONE SCREEN */
+.hero {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* PROPER GRID CONTROL */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+  width: 100%;
+}
+
+/* LEFT COLUMN CONTROL */
+.hero-left {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .hero h1 {
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 17px;
-  color: #4b5563;
-  max-width: 520px;
+  margin-bottom: 10px;
+}
+/* RIGHT IMAGE */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* IMAGE SCALING */
+.hero-image {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* BETTER TYPOGRAPHY FIT */
+.hero h1 {
+  font-size: 44px;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 16.5px;
   line-height: 1.6;
+  max-width: 500px;
+  color: #4b5563;
 }
-
-/* CTA */
-.cta-row {
-  margin-top: 25px;
-}
-
 .cta {
   background: #2563eb;
   color: white;
@@ -128,6 +138,17 @@ nav {
 .cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(37, 99, 235, 0.25);
+}
+/* CTA STACK TIGHTER */
+.cta-stack {
+  margin-top: 16px;
+}
+
+/* CTA FEAR SMALLER & TIGHTER */
+.cta-fear {
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: #6b7280;
 }
 
 .secondary {
@@ -220,62 +241,39 @@ footer {
   color: #9ca3af;
 }
 
-/* =========================
-   MOBILE RESPONSIVENESS
-========================= */
 @media (max-width: 900px) {
+
+  .hero {
+    min-height: auto;
+    padding: 50px 20px;
+  }
 
   .hero-container {
     flex-direction: column;
     text-align: center;
+    gap: 25px;
+  }
+
+  .hero-left {
+    max-width: 100%;
   }
 
   .hero h1 {
-    font-size: 34px;
+    font-size: 32px;
   }
 
   .hero p {
-    font-size: 16px;
     margin: auto;
   }
 
-  
-
-  .secondary {
-    margin-left: 0;
-  }
-
   .hero-right {
-    order: 3; /* ensures image goes BELOW CTA */
-    margin-top: 20px;
+    order: 3;
   }
 
   .hero-image {
-    max-width: 320px;
+    max-width: 300px;
   }
-}
-.cta-fear {
-  margin-top: 10px;
-  font-size: 12.5px;
-  color: #6b7280;
-  text-align: center;
-  max-width: 420px;
-}
-@media (max-width: 900px) {
-  .cta-fear {
-    font-size: 12px;
-    padding: 0 10px;
-  }
-}
-.cta-stack {
-  margin-top: 22px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 18px;
 
-}
-@media (max-width: 900px) {
   .cta-stack {
     align-items: center;
   }
@@ -296,9 +294,7 @@ footer {
   <a class="nav-btn" href="#">Book Call</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-
   <div class="hero-container">
 
     <!-- LEFT -->
@@ -306,31 +302,34 @@ footer {
 
       <div class="badge">
         ⭐⭐⭐⭐⭐ Trusted by growing businesses
-        </div>
+      </div>
 
-      <h1>Bring order to your business — inventory, sales, and profits in one system.</h1>
+      <h1>
+        Bring order to your business — inventory, sales, and profits in one system.
+      </h1>
 
       <p>
         We help small and growing businesses manage everything in one place with our POS— from inventory tracking to sales recording and profit reporting.
-         No more manual books, lost stock, or messy records.
+        No more manual books, lost stock, or messy records.
       </p>
 
       <div class="cta-stack">
         <a class="cta" href="#">Get Free Demo</a>
-        
+
         <div class="cta-fear">
-            ✔ Simple for anyone to use • ✔ Secure & reliable • ✔ 24/7 Support
+          ✔ Simple for anyone to use • ✔ Secure & reliable • ✔ 24/7 Support
         </div>
       </div>
 
-    <!-- RIGHT IMAGE -->
+    </div>
+
+    <!-- RIGHT -->
     <div class="hero-right">
       <img class="hero-image" src="https://via.placeholder.com/500x400" alt="Dashboard Preview">
     </div>
 
   </div>
 </section>
-
 
 
 <!-- PROOF -->
