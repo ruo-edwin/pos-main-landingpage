@@ -345,11 +345,25 @@ We help you stop losing money silently through better systems.
 </div>
 </div>
 
-<script>
 
-/* =========================
-YOUR SCRIPT (UNCHANGED)
-========================= */
+<!-- WIZARD -->
+<div class="container" id="wizard">
+
+<div class="card">
+
+<div class="steps" id="steps"></div>
+<div class="question" id="question"></div>
+<div id="inputArea"></div>
+
+<div class="nav">
+<button class="back" onclick="backStep()">Back</button>
+<button class="next" onclick="nextStep()">Next</button>
+</div>
+
+</div>
+</div>
+
+<script>
 
 let step = 0;
 
@@ -363,39 +377,352 @@ let data = {
 };
 
 const questions = [
-{ q:"Business Name", type:"input", key:"businessName" },
-{ q:"Owner Name", type:"input", key:"ownerName" },
-{ q:"Phone Number", type:"input", key:"phone" },
+
 {
-    q:"Business Type",
-    type:"select",
-    key:"businessType",
-    options:["Mini Mart","Pharmacy","Wines & Spirits","Hardware","Beauty Shop","Supermarket","Other"]
+    q: "Business Name",
+    type: "input",
+    key: "businessName"
 },
+
 {
-    q:"Biggest Challenge",
-    type:"select",
-    key:"pain",
-    options:["Stock losses / theft","No sales tracking","Manual bookkeeping","No idea on profit","Staff issues","Everything is disorganized","All of the above"]
+    q: "Owner Name",
+    type: "input",
+    key: "ownerName"
 },
+
 {
-    q:"Current System",
-    type:"select",
-    key:"system",
-    options:["Manual Book","Excel","Existing POS","No System"]
+    q: "Phone Number",
+    type: "input",
+    key: "phone"
+},
+
+{
+    q: "Business Type",
+    type: "select",
+    key: "businessType",
+
+    options: [
+        "Mini Mart",
+        "Pharmacy",
+        "Wines & Spirits",
+        "Hardware",
+        "Beauty Shop",
+        "Supermarket",
+        "Other"
+    ]
+},
+
+{
+    q: "Biggest Challenge",
+    type: "select",
+    key: "pain",
+
+    options: [
+        "Stock losses / theft",
+        "No sales tracking",
+        "Manual bookkeeping",
+        "No idea on profit",
+        "Staff issues",
+        "Everything is disorganized",
+        "All of the above"
+    ]
+},
+
+{
+    q: "Current System",
+    type: "select",
+    key: "system",
+
+    options: [
+        "Manual Book",
+        "Excel",
+        "Existing POS",
+        "No System"
+    ]
 }
+
 ];
 
-/* ALL FUNCTIONS BELOW UNCHANGED */
-function start(){document.getElementById("hero").style.display="none";document.getElementById("wizard").style.display="flex";window.scrollTo(0,0);buildSteps();loadStep();}
-function buildSteps(){let html="";questions.forEach((_,i)=>{html+=`<div class="step" id="step-${i}">${i+1}</div>`});document.getElementById("steps").innerHTML=html;}
-function loadStep(){let q=questions[step];document.getElementById("question").innerText=q.q;let html="";if(q.type==="input"){html=`<input id="field" value="${data[q.key]}" />`}if(q.type==="select"){html=`<select id="field">${q.options.map(o=>`<option>${o}</option>`).join("")}</select>`}document.getElementById("inputArea").innerHTML=html;}
-function nextStep(){step<questions.length-1?step++:finish();loadStep();}
-function backStep(){if(step>0){step--;loadStep();}}
-function finish(){alert("Submitted");}
-function trackDemo(){if(typeof fbq!=="undefined"){fbq('track','Lead');}}
+/* START */
 
+function start(){
+
+document.getElementById("hero").style.display = "none";
+
+document.getElementById("wizard").style.display = "flex";
+
+window.scrollTo(0,0);
+
+buildSteps();
+
+loadStep();
+
+}
+
+/* BUILD STEPS */
+
+function buildSteps(){
+
+let html = "";
+
+questions.forEach((_,i)=>{
+
+html += `
+<div class="step" id="step-${i}">
+${i+1}
+</div>
+`;
+
+});
+
+document.getElementById("steps").innerHTML = html;
+
+}
+
+/* LOAD STEP */
+
+function loadStep(){
+
+let q = questions[step];
+
+document.getElementById("question").innerText = q.q;
+
+let html = "";
+
+/* INPUT TYPE */
+if(q.type === "input"){
+
+    let inputType = "text";
+
+    // special handling for phone
+    let placeholder = "Enter here...";
+
+    if(q.key === "phone"){
+        inputType = "tel";
+        placeholder = "e.g. 0712345678 or +254712345678";
+    }
+
+    html = `
+    <input
+        id="field"
+        type="${inputType}"
+        value="${data[q.key]}"
+        placeholder="${placeholder}"
+        autocomplete="off"
+    />
+    `;
+}
+
+/* SELECT TYPE */
+if(q.type === "select"){
+
+    html = `
+    <select id="field">
+
+        <option value="" disabled selected hidden>
+            Select an option
+        </option>
+
+        ${q.options.map(o => `
+            <option ${data[q.key] === o ? "selected" : ""}>
+                ${o}
+            </option>
+        `).join("")}
+
+    </select>
+    `;
+}
+
+document.getElementById("inputArea").innerHTML = html;
+
+/* STEP UI UPDATE */
+updateSteps();
+
+/* FOCUS INPUT (safe + smooth) */
+setTimeout(() => {
+    let el = document.getElementById("field");
+    if(el){
+        el.focus({ preventScroll: true });
+    }
+}, 120);
+
+}
+/* VALIDATION */
+
+function isValid(){
+
+let value = document.getElementById("field").value.trim();
+let key = questions[step].key;
+
+/* empty check */
+if(!value || value === "Select an option"){
+    return false;
+}
+
+/* PHONE VALIDATION */
+if(key === "phone"){
+
+    // Kenyan formats:
+    // 07XXXXXXXX
+    // +2547XXXXXXXX
+    // 01XXXXXXXX (optional newer ranges)
+
+    const kenyanPhoneRegex = /^(?:\+254|0)[17]\d{8}$/;
+
+    if(!kenyanPhoneRegex.test(value)){
+        alert("Please enter a valid Kenyan phone number (e.g. 0712345678 or +254712345678)");
+        return false;
+    }
+}
+
+return true;
+}
+
+/* SAVE */
+
+function save(){
+
+data[questions[step].key] =
+document.getElementById("field").value;
+
+}
+
+/* NEXT */
+
+function nextStep(){
+
+if(!isValid()){
+
+alert("Please complete this step.");
+
+return;
+
+}
+
+save();
+
+if(step < questions.length - 1){
+
+step++;
+
+loadStep();
+
+}else{
+
+finish();
+
+}
+
+}
+
+/* BACK */
+
+function backStep(){
+
+if(step > 0){
+
+step--;
+
+loadStep();
+
+}
+
+}
+
+/* STEP UI */
+
+function updateSteps(){
+
+questions.forEach((_,i)=>{
+
+let el = document.getElementById(`step-${i}`);
+
+el.classList.remove("active","done");
+
+if(i < step){
+el.classList.add("done");
+}
+
+if(i === step){
+el.classList.add("active");
+}
+
+});
+
+}
+
+/* FINISH */
+
+function finish(){
+
+save();
+if(typeof fbq !== "undefined"){
+    fbq('track','Lead');
+}
+
+const params = new URLSearchParams();
+
+params.append("businessName", data.businessName);
+params.append("ownerName", data.ownerName);
+params.append("phone", data.phone);
+params.append("businessType", data.businessType);
+params.append("pain", data.pain);
+params.append("system", data.system);
+
+fetch(
+"https://script.google.com/macros/s/AKfycbyrZCxxhe6ZtIMz056rL5uhhu8FcQKXsLGgHM8i2OFtYNK1O7XSXiq2zq1vHVh2IQQKHg/exec",
+{
+method:"POST",
+mode:"no-cors",
+body:params
+}
+);
+
+document.querySelector(".card").innerHTML = `
+
+<div style="text-align:center;padding:40px 10px;">
+
+<h2 style="font-size:38px;margin-bottom:18px;">
+Request Received
+</h2>
+
+<p style="color:#cbd5e1;line-height:1.8;font-size:17px;">
+Thank you for your interest in RUO Systems.<br>
+Our team will contact you shortly to schedule your free demo.
+</p>
+
+<button
+onclick="location.reload()"
+style="
+margin-top:30px;
+padding:16px 30px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#a855f7,#6366f1);
+color:white;
+font-weight:700;
+cursor:pointer;
+"
+>
+Back Home
+</button>
+
+</div>
+
+`;
+
+}
+function trackDemo(){
+
+if(typeof fbq !== "undefined"){
+    fbq('track','Lead');
+}
+
+}
 </script>
+
+
+
 
 </body>
 </html>
