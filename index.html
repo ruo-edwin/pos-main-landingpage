@@ -375,6 +375,54 @@ cursor:pointer;
   margin-bottom: 15px;
   font-weight: 500;
 }
+.offer {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+.offer-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.offer-left, .offer-right {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.offer h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #111827;
+}
+
+.offer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.offer li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.offer-cta {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .offer-box {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 
@@ -467,7 +515,47 @@ cursor:pointer;
   </div>
 
 </section>
+<!-- OFFER SECTION -->
+<section class="offer">
 
+  <div class="section-title">
+    <h2>Get Your Business Fully Organized in 48 Hours</h2>
+    <p>We install a complete POS system that helps you track stock, sales, and profit in real time.</p>
+  </div>
+
+  <div class="offer-box">
+
+    <div class="offer-left">
+      <h3>What you get</h3>
+
+      <ul>
+        <li>✔ Inventory tracking system</li>
+        <li>✔ Sales recording dashboard</li>
+        <li>✔ Profit overview in real time</li>
+        <li>✔ Easy POS for staff usage</li>
+        <li>✔ Mobile + desktop access</li>
+      </ul>
+    </div>
+
+    <div class="offer-right">
+      <h3>Why businesses choose us</h3>
+
+      <ul>
+        <li>✔ No technical skills needed</li>
+        <li>✔ We set everything up for you</li>
+        <li>✔ Training included for staff</li>
+        <li>✔ Ongoing support</li>
+        <li>✔ Fast setup (24–48 hours)</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="offer-cta">
+    <a class="cta" href="#" onclick="openWizard()">Get Free Demo</a>
+  </div>
+
+</section>
 <!-- FEATURES -->
 <div class="section-title">
   <h2>What We Build</h2>
