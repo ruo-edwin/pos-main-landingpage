@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ruo Systems | Build Systems That Scale Your Business</title>
+<title>Ruo Systems</title>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -17,193 +16,273 @@
 }
 
 body {
-  background: #0b0f1a;
-  color: #fff;
-  line-height: 1.6;
+  background: #f7f8fc;
+  color: #111827;
+}
+
+/* NAV */
+nav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.nav-btn {
+  background: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 /* HERO */
 .hero {
-  padding: 80px 20px;
   max-width: 1100px;
   margin: auto;
+  padding: 70px 20px 30px;
   text-align: center;
 }
 
 .badge {
   display: inline-block;
+  background: #eef2ff;
+  color: #4338ca;
   padding: 8px 14px;
-  background: rgba(255,255,255,0.08);
   border-radius: 999px;
   font-size: 13px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  font-weight: 500;
 }
 
-h1 {
+.hero h1 {
   font-size: 48px;
   font-weight: 800;
+  line-height: 1.2;
   margin-bottom: 15px;
 }
 
-h1 span {
-  color: #6c5ce7;
-}
-
-.subtext {
+.hero p {
   font-size: 18px;
-  opacity: 0.85;
+  color: #4b5563;
   max-width: 700px;
   margin: auto;
-  margin-bottom: 30px;
 }
 
-.cta-btn {
-  background: #6c5ce7;
-  padding: 15px 28px;
-  border-radius: 10px;
+.cta-row {
+  margin-top: 25px;
+}
+
+.cta {
+  background: #2563eb;
   color: white;
+  padding: 14px 22px;
+  border-radius: 10px;
+  text-decoration: none;
   font-weight: 600;
   display: inline-block;
+}
+
+.secondary {
+  margin-left: 10px;
+  color: #2563eb;
+  font-weight: 600;
   text-decoration: none;
-  transition: 0.3s;
 }
 
-.cta-btn:hover {
-  transform: scale(1.05);
-}
-
-/* TRUST */
+/* TRUST STRIP */
 .trust {
-  margin-top: 25px;
-  font-size: 13px;
-  opacity: 0.7;
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  color: #6b7280;
+  font-size: 14px;
 }
 
-/* PAIN SECTION */
-.section {
-  max-width: 1000px;
+/* PROOF SECTION */
+.proof {
+  max-width: 1100px;
   margin: auto;
-  padding: 80px 20px;
-}
-
-.section h2 {
-  font-size: 32px;
-  margin-bottom: 15px;
-}
-
-.cards {
+  padding: 60px 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  margin-top: 30px;
 }
 
 .card {
-  background: rgba(255,255,255,0.05);
+  background: white;
+  border-radius: 14px;
   padding: 20px;
-  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* SOCIAL PROOF */
-.proof {
-  background: rgba(108,92,231,0.1);
-  padding: 60px 20px;
+.card .stars {
+  color: #f59e0b;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* SECTION TITLE */
+.section-title {
   text-align: center;
+  margin-top: 20px;
 }
 
-.proof h2 {
-  margin-bottom: 20px;
+.section-title h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
+.section-title p {
+  color: #6b7280;
+  max-width: 600px;
+  margin: auto;
 }
 
-.stat {
-  font-size: 20px;
-  font-weight: 700;
+/* FEATURES */
+.features {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
-/* CTA FINAL */
+.feature {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.feature h3 {
+  margin-bottom: 10px;
+}
+
+/* FINAL CTA */
 .final {
   text-align: center;
   padding: 80px 20px;
 }
 
+.final h2 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
 footer {
   text-align: center;
   padding: 30px;
-  font-size: 12px;
-  opacity: 0.6;
+  font-size: 13px;
+  color: #9ca3af;
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
+<nav>
+  <div class="logo">Ruo Systems</div>
+  <a class="nav-btn" href="#">Book Call</a>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
-  <div class="badge">⚡ Build Systems That Make Your Business Run Without You</div>
+  <div class="badge">Business Automation & Growth Systems</div>
 
-  <h1>
-    Scale Your Business With <span>Automated Systems</span>
-  </h1>
+  <h1>Build Systems That Run Your Business On Autopilot</h1>
 
-  <p class="subtext">
-    We help businesses design, build, and automate digital systems that generate leads, manage operations, and increase revenue — without increasing workload.
+  <p>
+    We help businesses automate operations, capture more leads, and track performance using simple but powerful digital systems.
   </p>
 
-  <a href="#cta" class="cta-btn">Get a Free Strategy Call</a>
-
-  <div class="trust">
-    Trusted by startups, agencies & growing businesses across Kenya & beyond
+  <div class="cta-row">
+    <a class="cta" href="#">Get Free Strategy Call</a>
+    <a class="secondary" href="#">See How It Works</a>
   </div>
 </section>
 
-<!-- PAIN -->
-<section class="section">
-  <h2>Most businesses are stuck because of broken systems</h2>
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div>✔ No-Code Systems</div>
+  <div>✔ CRM Setup</div>
+  <div>✔ Automation Flows</div>
+  <div>✔ Lead Tracking</div>
+</div>
 
-  <div class="cards">
-    <div class="card">❌ You rely on manual processes that waste time</div>
-    <div class="card">❌ Your leads are not tracked or converted properly</div>
-    <div class="card">❌ You spend on ads but don’t know what’s working</div>
-  </div>
-</section>
-
-<!-- AUTHORITY -->
+<!-- PROOF -->
 <section class="proof">
-  <h2>We build systems that fix this</h2>
 
-  <div class="stats">
-    <div class="stat">⚡ Lead Automation</div>
-    <div class="stat">📊 Data Tracking Systems</div>
-    <div class="stat">💰 Revenue Optimization</div>
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <p>“We started tracking all leads automatically and doubled conversions in 2 weeks.”</p>
   </div>
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <p>“Everything in our business is now organized and measurable.”</p>
+  </div>
+
+  <div class="card">
+    <div class="stars">★★★★★</div>
+    <p>“Best system setup we’ve had — saved hours every day.”</p>
+  </div>
+
 </section>
 
-<!-- VALUE -->
-<section class="section">
-  <h2>What you get with Ruo Systems</h2>
+<!-- SECTION TITLE -->
+<div class="section-title">
+  <h2>What We Build For You</h2>
+  <p>Simple systems that replace manual work and help you scale faster</p>
+</div>
 
-  <div class="cards">
-    <div class="card">✔ Custom business automation systems</div>
-    <div class="card">✔ CRM & lead tracking setup</div>
-    <div class="card">✔ Dashboard for business insights</div>
+<!-- FEATURES -->
+<section class="features">
+
+  <div class="feature">
+    <h3>Lead Capture Systems</h3>
+    <p>Automatically collect and organize leads from ads and forms.</p>
   </div>
+
+  <div class="feature">
+    <h3>Business Dashboards</h3>
+    <p>See your sales, performance, and operations in one place.</p>
+  </div>
+
+  <div class="feature">
+    <h3>Automation Flows</h3>
+    <p>Remove repetitive tasks using smart automation systems.</p>
+  </div>
+
 </section>
 
 <!-- FINAL CTA -->
-<section class="final" id="cta">
-  <h2>Ready to fix your business systems?</h2>
-  <p style="margin:15px 0; opacity:0.8;">
-    Book a free strategy call and we’ll map out exactly what your business needs to scale.
+<section class="final">
+  <h2>Ready to simplify your business?</h2>
+  <p style="color:#6b7280; margin-bottom:20px;">
+    Book a free call and we’ll map out your system.
   </p>
 
-  <a href="#" class="cta-btn">Book Free Consultation</a>
+  <a class="cta" href="#">Book Free Consultation</a>
 </section>
 
 <footer>
