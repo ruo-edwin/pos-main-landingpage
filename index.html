@@ -545,6 +545,51 @@ cursor:pointer;
     flex-direction: column;
   }
 }
+/* =========================
+   MOBILE WIZARD FIX (IMPORTANT)
+========================= */
+@media (max-width: 600px) {
+
+  .wizard-modal {
+    padding: 10px;
+  }
+
+  .wizard-box {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .step h2 {
+    font-size: 18px;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .step input,
+  .step select {
+    font-size: 16px; /* prevents iOS zoom + improves spacing */
+    padding: 14px 12px;
+    margin-bottom: 14px;
+  }
+
+  /* THIS FIXES YOUR BUSINESS TYPE LOOKING “CRAMPED” */
+  #businessType {
+    height: 48px;
+    appearance: none;
+    -webkit-appearance: none;
+    background: white;
+  }
+
+  .step button {
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .step-indicator {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+}
 </style>
 </head>
 
